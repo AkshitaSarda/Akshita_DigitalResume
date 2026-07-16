@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
-import { GoogleGenAI } from '@google/genai';
+// import { GoogleGenAI } from '@google/genai'; // Chatbot disabled temporarily
 
 dotenv.config();
 
@@ -13,6 +13,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 app.use(express.json());
 
+/* CHATBOT DISABLED TEMPORARILY
 // Initialize Gemini client securely server-side
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
@@ -87,6 +88,7 @@ When asked questions:
     res.status(500).json({ error: error.message || 'Internal Server Error' });
   }
 });
+*/
 
 // Integrate with Vite for development and static hosting for production
 if (process.env.NODE_ENV !== 'production') {

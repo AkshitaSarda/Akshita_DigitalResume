@@ -24,12 +24,14 @@ export interface Project {
   color: string;
 }
 
+/* CHATBOT DISABLED TEMPORARILY
 export interface ChatMessage {
   id: string;
   sender: "user" | "assistant";
   text: string;
   timestamp: string;
 }
+*/
 
 export interface ConfigOption {
   id: string;

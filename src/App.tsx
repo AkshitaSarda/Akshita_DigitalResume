@@ -5,15 +5,15 @@ import {
   Cloud, 
   Terminal, 
   ChevronRight, 
-  Send, 
+  // Send, // Chatbot disabled temporarily 
   Upload, 
   Layers, 
   Zap, 
   Activity, 
   Shield, 
   Compass, 
-  MessageSquare,
-  X,
+  // MessageSquare, // Chatbot disabled temporarily
+  // X, // Chatbot disabled temporarily
   Play,
   RotateCcw,
   Maximize2,
@@ -39,11 +39,13 @@ interface Project {
   vibe: string;
 }
 
+/* CHATBOT DISABLED TEMPORARILY
 interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;
   timestamp: string;
 }
+*/
 
 export default function App() {
   // Theme state: 'vision' (Apple Vision Pro) or 'cyber' (Tesla Cybertruck)
@@ -59,6 +61,7 @@ export default function App() {
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  /* CHATBOT DISABLED TEMPORARILY
   // Chatbot State
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
   const [chatMessage, setChatMessage] = useState<string>('');
@@ -71,6 +74,7 @@ export default function App() {
   ]);
   const [isChatLoading, setIsChatLoading] = useState<boolean>(false);
   const chatBottomRef = useRef<HTMLDivElement>(null);
+  */
 
   // Canvas ref for interactive particle background
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -160,12 +164,14 @@ export default function App() {
     }
   ];
 
+  /* CHATBOT DISABLED TEMPORARILY
   // Suggestion chips for Chat
   const presetSuggestions = [
     "Tell me about Akshita's Cloud architecture experience.",
     "What spatial computing projects has she built?",
     "How did she start her IT journey?"
   ];
+  */
 
   // Load saved profile image on mount
   useEffect(() => {
@@ -175,12 +181,14 @@ export default function App() {
     }
   }, []);
 
+  /* CHATBOT DISABLED TEMPORARILY
   // Scroll chat to bottom
   useEffect(() => {
     if (chatBottomRef.current) {
       chatBottomRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [chatHistory, isChatLoading]);
+  */
 
   // Autopilot simulation logic (animates Cybertruck speed)
   useEffect(() => {
@@ -477,6 +485,7 @@ export default function App() {
     fileInputRef.current?.click();
   };
 
+  /* CHATBOT DISABLED TEMPORARILY
   // Chat API call to Express Backend
   const handleSendMessage = async (customText?: string) => {
     const textToSend = customText || chatMessage;
@@ -531,6 +540,7 @@ export default function App() {
       setIsChatLoading(false);
     }
   };
+  */
 
   // Trigger milestone driving simulation
   const handleMilestoneSelect = (idx: number) => {
@@ -624,7 +634,7 @@ export default function App() {
             </button>
           </div>
 
-          {/* Quick Action Link */}
+          {/* CHATBOT DISABLED TEMPORARILY
           <div className="pr-4 hidden md:block">
             <button
               id="action-chat-btn"
@@ -638,6 +648,7 @@ export default function App() {
               Direct AI Inquiry
             </button>
           </div>
+          */}
         </div>
       </header>
 
@@ -1100,19 +1111,20 @@ export default function App() {
         </section>
       </main>
 
-      {/* FLOAT AI TWIN CHATBOT STAGE (Gemini SDK Integration) */}
+      {/* CHATBOT DISABLED TEMPORARILY
+      
       <div 
         id="ai-chatbot-dock"
         className="fixed bottom-6 right-6 z-50 flex flex-col items-end"
       >
-        {/* The Expandable Chat Panel */}
+        
         {isChatOpen ? (
           <div className={`w-[90vw] sm:w-[380px] h-[480px] flex flex-col mb-4 transition-all duration-500 shadow-2xl ${
             theme === 'vision'
               ? 'glass-panel backdrop-blur-3xl bg-white/5 border-white/10 rounded-[32px]'
               : 'bg-black border border-neutral-800 rounded-none'
           }`}>
-            {/* Header */}
+            
             <div className={`p-4 flex items-center justify-between border-b ${
               theme === 'vision' ? 'border-white/5' : 'border-neutral-800'
             }`}>
@@ -1134,7 +1146,7 @@ export default function App() {
               </button>
             </div>
 
-            {/* Messages Body */}
+            
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {chatHistory.map((msg, idx) => (
                 <div 
@@ -1158,13 +1170,13 @@ export default function App() {
                 </div>
               ))}
               
-              {/* Typing / Loading indicator with custom frequency audio visualizer */}
+              
               {isChatLoading && (
                 <div className="flex flex-col items-start gap-2">
                   <div className={`p-3 rounded-xl flex items-center gap-3 ${
                     theme === 'vision' ? 'bg-white/5 border border-white/5' : 'bg-neutral-900/40 border border-neutral-800'
                   }`}>
-                    {/* Pulsing orbs representing spatial voice computing */}
+                    
                     <div className="flex items-center gap-1">
                       <div className="w-1 h-3 bg-blue-500 rounded-full animate-[bounce_0.6s_infinite]" />
                       <div className="w-1 h-5 bg-purple-500 rounded-full animate-[bounce_0.6s_infinite_0.1s]" />
@@ -1178,7 +1190,7 @@ export default function App() {
               <div ref={chatBottomRef} />
             </div>
 
-            {/* Suggestion tags block */}
+            
             <div className={`p-2 border-t flex gap-1.5 overflow-x-auto ${
               theme === 'vision' ? 'border-white/5' : 'border-neutral-800'
             }`}>
@@ -1198,7 +1210,7 @@ export default function App() {
               ))}
             </div>
 
-            {/* Input Bar */}
+            
             <div className={`p-3 border-t flex items-center gap-2 ${
               theme === 'vision' ? 'border-white/5' : 'border-neutral-800'
             }`}>
@@ -1231,7 +1243,7 @@ export default function App() {
           </div>
         ) : null}
 
-        {/* Floating Bubble Launcher Toggle */}
+        
         <button
           id="chat-launcher-btn"
           onClick={() => setIsChatOpen(!isChatOpen)}
@@ -1247,6 +1259,7 @@ export default function App() {
           </span>
         </button>
       </div>
+      */}
 
       {/* FOOTER */}
       <footer className={`border-t py-12 px-4 text-center transition-colors duration-1000 ${
