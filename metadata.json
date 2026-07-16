@@ -1,0 +1,6 @@
+{
+  "name": "CyberSpatial Portfolio",
+  "description": "Interactive IT career portfolio inspired by Apple Vision Pro spatial UI and Tesla Cybertruck brutalist design, featuring a responsive AI professional clone.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
