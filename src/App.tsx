@@ -451,8 +451,8 @@ export default function App() {
             </h2>
 
             <p className="mt-5 max-w-3xl font-mono text-sm leading-7 text-slate-400 md:text-base md:leading-8">
-              Managing enterprise SBI Core Banking production environments.Optimizing high-scale databases and automating critical overnight batches.
-              <br className="hidden md:block" /> Monitoring EOD/SOD batches, resolving incidents, validating data with SQL, and supporting service continuity.
+              Managing enterprise SBI Core Banking production environments.
+              <br className="hidden md:block" /> Optimizing high-scale databases and automating critical overnight batches.
             </p>
 
             <div className="mt-8 flex w-full max-w-xl flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
