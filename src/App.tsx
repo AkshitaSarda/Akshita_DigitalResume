@@ -6,7 +6,6 @@ import {
   Terminal, 
   ChevronRight, 
   // Send, // Chatbot disabled temporarily 
-  Upload, 
   Layers, 
   Zap, 
   Activity, 
@@ -56,11 +55,6 @@ export default function App() {
   const [cyberSpeed, setCyberSpeed] = useState<number>(0);
   const [autopilotState, setAutopilotState] = useState<'IDLE' | 'ACCELERATING' | 'CRUISING'>('IDLE');
   
-  // Profile Image State (Persists in LocalStorage for great UX)
-  const [profileImage, setProfileImage] = useState<string>('/src/assets/images/profile_avatar_1784208215310.jpg');
-  const [isDragging, setIsDragging] = useState<boolean>(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
   /* CHATBOT DISABLED TEMPORARILY
   // Chatbot State
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
@@ -172,14 +166,6 @@ export default function App() {
     "How did she start her IT journey?"
   ];
   */
-
-  // Load saved profile image on mount
-  useEffect(() => {
-    const savedImg = localStorage.getItem('akshita_profile_pic');
-    if (savedImg) {
-      setProfileImage(savedImg);
-    }
-  }, []);
 
   /* CHATBOT DISABLED TEMPORARILY
   // Scroll chat to bottom
@@ -441,50 +427,6 @@ export default function App() {
     }));
   };
 
-  // Image Upload Mechanics (Supports click & Drag-and-Drop)
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (typeof reader.result === 'string') {
-          setProfileImage(reader.result);
-          localStorage.setItem('akshita_profile_pic', reader.result);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragging(true);
-  };
-
-  const handleDragLeave = () => {
-    setIsDragging(false);
-  };
-
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragging(false);
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      const file = e.dataTransfer.files[0];
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (typeof reader.result === 'string') {
-          setProfileImage(reader.result);
-          localStorage.setItem('akshita_profile_pic', reader.result);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const triggerUpload = () => {
-    fileInputRef.current?.click();
-  };
-
   /* CHATBOT DISABLED TEMPORARILY
   // Chat API call to Express Backend
   const handleSendMessage = async (customText?: string) => {
@@ -658,107 +600,10 @@ export default function App() {
         {/* HERO / PROFILE DISPLAY SECTION */}
         <section 
           id="hero-profile-section"
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+          className="flex items-center justify-center py-4"
         >
-          {/* Left Column: Interactive Avatar & Drag-Drop Upload */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center">
-            <div 
-              onDragOver={handleDragOver}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-              onClick={triggerUpload}
-              className={`relative cursor-pointer group transition-all duration-700 ${
-                isDragging ? 'scale-105' : ''
-              }`}
-            >
-              {/* Dynamic Theme Frame Styles */}
-              {theme === 'vision' ? (
-                // Apple Vision Pro Glowing Spherical Ring frame
-                <div className="relative p-6 rounded-full">
-                  {/* Rotating Gradient Ring */}
-                  <div className="absolute inset-0 rounded-full border border-dashed border-blue-400/40 animate-[spin_40s_linear_infinite]" />
-                  <div className="absolute inset-2 rounded-full bg-gradient-to-tr from-blue-500/20 via-purple-500/10 to-pink-500/20 blur-md" />
-                  <div className="absolute inset-3 rounded-full border-2 border-white/15 animate-[spin_25s_linear_infinite_reverse]" />
-                  
-                  {/* The Profile Portrait */}
-                  <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl backdrop-blur-sm">
-                    <img 
-                      id="profile-avatar-img-vision"
-                      src={profileImage} 
-                      alt="Akshita - Professional Profile Portrait" 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      referrerPolicy="no-referrer"
-                      onError={() => {
-                        // Fallback portrait in case of loading issues
-                        setProfileImage('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400');
-                      }}
-                    />
-                    
-                    {/* Hover Upload Overlay */}
-                    <div className="absolute inset-0 bg-black/40 backdrop-blur-xs flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Upload className="h-8 w-8 text-white mb-2 animate-bounce" />
-                      <span className="text-[10px] tracking-widest text-white uppercase font-medium">Upload Professional Pic</span>
-                      <span className="text-[8px] text-neutral-300 mt-1">Drag & Drop or Click</span>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                // Tesla Cybertruck Octagonal Industrial Frame with Laser headlamp
-                <div className="relative p-3 bg-[#0a0a0a] border border-neutral-800 rounded-none shadow-2xl">
-                  {/* Top LED Laser Light Line representing Cybertruck's signature lightbar */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-[#ff3e3e] cyber-laser-glow" />
-                  
-                  {/* Corner brackets */}
-                  <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-neutral-500" />
-                  <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-neutral-500" />
-                  
-                  {/* Corner Telemetry details */}
-                  <div className="absolute bottom-2 left-2 text-[8px] font-mono text-neutral-500 tracking-wider">
-                    SPEC: CYBR-TRK / OPT_01
-                  </div>
-                  
-                  {/* Octagonal Masked Container */}
-                  <div className="w-56 h-56 md:w-64 md:h-64 overflow-hidden border border-neutral-700 bg-neutral-900">
-                    <img 
-                      id="profile-avatar-img-cyber"
-                      src={profileImage} 
-                      alt="Akshita - Cyber Telemetry Profile Portrait" 
-                      className="w-full h-full object-cover grayscale brightness-90 transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
-                      referrerPolicy="no-referrer"
-                      onError={() => {
-                        setProfileImage('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400');
-                      }}
-                    />
-
-                    {/* Hover Upload Overlay */}
-                    <div className="absolute inset-0 bg-neutral-950/80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Upload className="h-8 w-8 text-[#ff3e3e] mb-2 animate-pulse" />
-                      <span className="text-[9px] font-mono tracking-widest text-[#ff3e3e] uppercase">UPDATE SYSTEM IMAGE</span>
-                      <span className="text-[8px] text-neutral-400 font-mono mt-1">CLICK_TO_IMPORT.SYS</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-              
-              {/* Hidden file selector input */}
-              <input 
-                id="profile-file-input"
-                ref={fileInputRef}
-                type="file" 
-                accept="image/*" 
-                onChange={handleFileChange} 
-                className="hidden" 
-              />
-            </div>
-            
-            {/* Helpful upload prompt */}
-            <span className="text-[10px] tracking-wider text-neutral-500 mt-3 font-mono">
-              [Click or drop image file to change profile picture]
-            </span>
-          </div>
-
-          {/* Right Column: Hero copy and main stats */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+          {/* Centered hero copy and main stats */}
+          <div className="w-full max-w-3xl space-y-6 text-center">
             {/* Top label / status */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900/60 border border-neutral-800">
               <span className={`h-2 w-2 rounded-full ${theme === 'vision' ? 'bg-emerald-400 animate-pulse' : 'bg-red-500'}`} />
@@ -785,14 +630,14 @@ export default function App() {
             </div>
 
             {/* Bio paragraph */}
-            <p className={`text-sm md:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed transition-all duration-500 ${
+            <p className={`text-sm md:text-base max-w-2xl mx-auto leading-relaxed transition-all duration-500 ${
               theme === 'vision' ? 'text-neutral-400' : 'text-neutral-400 font-mono'
             }`}>
               Designing next-generation cloud architectures and tactile spatial computer user interfaces. Leveraging heavy full-stack structures (TS/Node), cloud scalability models, and real-time generative intelligence to construct high-performance digital products.
             </p>
 
             {/* Quick dashboard figures */}
-            <div className="grid grid-cols-3 gap-3 max-w-md mx-auto lg:mx-0 pt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-lg mx-auto pt-4">
               <div className={`p-3 text-center transition-all duration-500 ${
                 theme === 'vision' ? 'glass-panel backdrop-blur-xl bg-white/[0.04] border-white/10 rounded-3xl' : 'bg-[#0a0a0a] border border-neutral-800'
               }`}>
