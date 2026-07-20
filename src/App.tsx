@@ -4,6 +4,7 @@ import {
   Cloud,
   Compass,
   Cpu,
+  Download,
   Layers,
   Sparkles,
   // MessageSquare, // Chatbot disabled temporarily
@@ -375,10 +376,15 @@ export default function App() {
             <span className="text-sm font-semibold tracking-[0.25em] text-white">AKSHITA</span>
           </div>
 
-          <div className="mr-2 flex items-center gap-1.5 rounded-full border border-blue-500/20 bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-blue-300">
-            <Sparkles className="h-3 w-3" />
-            Vision Pro
-          </div>
+          <a
+            href="/Akshita_Sarda_Resume.pdf"
+            download="Akshita_Sarda_Resume.pdf"
+            aria-label="Download Akshita Sarda resume"
+            className="mr-2 flex items-center gap-1.5 rounded-full border border-blue-500/20 bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-blue-300 transition hover:border-blue-400/40 hover:bg-blue-500/15 hover:text-blue-200"
+          >
+            <Download className="h-3.5 w-3.5" />
+            Download Resume
+          </a>
 
           {/* CHATBOT DISABLED TEMPORARILY
           <button
