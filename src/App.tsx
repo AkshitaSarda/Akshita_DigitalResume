@@ -425,7 +425,7 @@ export default function App() {
       <main className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-16 px-4 pb-24 pt-8 md:px-8">
         <section
           id="hero-profile-section"
-          className="relative flex min-h-[560px] flex-col items-center justify-center overflow-hidden py-10 md:min-h-[620px]"
+          className="relative flex min-h-[500px] flex-col items-center justify-center overflow-hidden py-8 md:min-h-[550px]"
         >
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute left-[9%] top-[18%] h-px w-28 bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent" />
@@ -438,7 +438,7 @@ export default function App() {
               <div className="pointer-events-none absolute left-[24%] top-[56%] hidden h-6 w-32 -skew-x-12 bg-[#030307] shadow-[0_0_26px_rgba(34,211,238,0.18)] md:block" />
               <div className="pointer-events-none absolute right-[22%] top-[56%] hidden h-6 w-36 skew-x-12 bg-[#030307] shadow-[0_0_26px_rgba(168,85,247,0.16)] md:block" />
 
-              <h1 className="relative text-[clamp(3.2rem,10vw,8.7rem)] font-black uppercase leading-[0.84] tracking-[-0.065em] text-white">
+              <h1 className="relative text-[clamp(2.8rem,7vw,6.4rem)] font-black uppercase leading-[0.9] tracking-[-0.055em] text-white">
                 <span className="block sm:inline">Akshita</span>{' '}
                 <span className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-purple-500 bg-clip-text text-transparent">
                   Sarda
@@ -446,16 +446,16 @@ export default function App() {
               </h1>
             </div>
 
-            <h2 className="mt-7 font-mono text-xs font-semibold uppercase tracking-[0.24em] text-slate-300 sm:text-sm md:text-lg md:tracking-[0.3em]">
+            <h2 className="mt-5 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-300 sm:text-xs md:text-base md:tracking-[0.28em]">
               System Engineer <span className="text-cyan-400">·</span> TCS BaNCS Support Specialist
             </h2>
 
-            <p className="mt-5 max-w-3xl font-mono text-sm leading-7 text-slate-400 md:text-base md:leading-8">
+            <p className="mt-4 max-w-2xl font-mono text-sm leading-6 text-slate-400 md:text-[15px] md:leading-7">
               Managing enterprise SBI Core Banking production environments.
               <br className="hidden md:block" /> Optimizing high-scale databases and automating critical overnight batches.
             </p>
 
-            <div className="mt-8 flex w-full max-w-xl flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+            <div className="mt-7 flex w-full max-w-lg flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
               <a
                 href="#spatial-journey-section"
                 className="group relative inline-flex min-h-12 flex-1 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-cyan-400 via-sky-400 to-fuchsia-500 px-6 text-sm font-extrabold uppercase tracking-wide text-slate-950 shadow-[0_0_32px_rgba(34,211,238,0.2)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_42px_rgba(168,85,247,0.28)]"
@@ -477,7 +477,7 @@ export default function App() {
             <a
               href="#spatial-journey-section"
               aria-label="Scroll to career journey"
-              className="mt-7 inline-flex flex-col items-center gap-2 font-mono text-[10px] uppercase tracking-[0.28em] text-slate-500 transition hover:text-cyan-300"
+              className="mt-6 inline-flex flex-col items-center gap-2 font-mono text-[10px] uppercase tracking-[0.28em] text-slate-500 transition hover:text-cyan-300"
             >
               Scroll to begin
               <ArrowDown className="h-5 w-5 animate-bounce text-cyan-400" />
