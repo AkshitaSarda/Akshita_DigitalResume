@@ -8,7 +8,6 @@ import {
   Sparkles,
   // MessageSquare, // Chatbot disabled temporarily
   // Send, // Chatbot disabled temporarily
-  X,
 } from 'lucide-react';
 
 interface Milestone {
@@ -39,7 +38,6 @@ interface ChatMessage {
 
 export default function App() {
   const [currentMilestoneIdx, setCurrentMilestoneIdx] = useState<number>(0);
-  const [isProfileOpen, setIsProfileOpen] = useState<boolean>(false);
 
   /* CHATBOT DISABLED TEMPORARILY
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
@@ -155,17 +153,6 @@ export default function App() {
     chatBottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [chatHistory, isChatLoading]);
   */
-
-  useEffect(() => {
-    if (!isProfileOpen) return;
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setIsProfileOpen(false);
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isProfileOpen]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -381,23 +368,33 @@ export default function App() {
       <header id="header-nav" className="sticky top-0 z-50 w-full px-4 py-3 md:px-8">
         <div className="glass-panel mx-auto flex max-w-7xl items-center justify-between rounded-full border-white/10 bg-white/5 p-2 shadow-lg backdrop-blur-md">
           <div className="flex items-center gap-3 pl-2 md:pl-4">
-            <button
-              type="button"
-              onClick={() => setIsProfileOpen((open) => !open)}
-              aria-label={isProfileOpen ? 'Hide Akshita Sarda profile picture' : 'Enlarge Akshita Sarda profile picture'}
-              aria-haspopup="dialog"
-              aria-expanded={isProfileOpen}
-              aria-controls="profile-image-dialog"
-              className="group relative h-9 w-9 shrink-0 overflow-hidden rounded-full border border-blue-400/50 bg-neutral-900 shadow-[0_0_18px_rgba(59,130,246,0.24)] transition duration-200 hover:scale-105 hover:border-purple-400/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030307]"
-            >
-              <img
-                src="/Akshita_Profile_Thumb.webp"
-                alt=""
-                aria-hidden="true"
-                className="h-full w-full object-cover transition duration-300 group-hover:scale-110"
-              />
-              <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/20" />
-            </button>
+            <div className="group/profile relative shrink-0">
+              <button
+                type="button"
+                aria-label="Preview Akshita Sarda profile picture"
+                className="relative block h-9 w-9 overflow-hidden rounded-full border border-blue-400/50 bg-neutral-900 shadow-[0_0_18px_rgba(59,130,246,0.24)] transition duration-200 hover:scale-105 hover:border-purple-400/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030307]"
+              >
+                <img
+                  src="/Akshita_Profile_Thumb.webp"
+                  alt="Akshita Sarda"
+                  className="h-full w-full object-cover transition duration-300 group-hover/profile:scale-110"
+                />
+                <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/20" />
+              </button>
+
+              <div
+                role="img"
+                aria-label="Enlarged profile picture of Akshita Sarda"
+                className="pointer-events-none absolute left-0 top-[calc(100%+0.75rem)] z-[70] w-[190px] origin-top-left translate-y-2 scale-95 overflow-hidden rounded-[1.4rem] border border-white/15 bg-neutral-950/95 p-1.5 opacity-0 shadow-[0_24px_70px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-200 group-hover/profile:translate-y-0 group-hover/profile:scale-100 group-hover/profile:opacity-100 group-focus-within/profile:translate-y-0 group-focus-within/profile:scale-100 group-focus-within/profile:opacity-100 sm:w-[225px]"
+              >
+                <img
+                  src="/Akshita_Profile.webp"
+                  alt=""
+                  aria-hidden="true"
+                  className="block h-[250px] w-full rounded-[1.05rem] object-cover object-top sm:h-[300px]"
+                />
+              </div>
+            </div>
             <span className="text-sm font-semibold tracking-[0.25em] text-white">AKSHITA</span>
           </div>
 
@@ -426,33 +423,9 @@ export default function App() {
       <main className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-16 px-4 pb-24 pt-8 md:px-8">
         <section
           id="hero-profile-section"
-          className="relative flex min-h-[430px] flex-col items-center justify-center gap-8 py-4 min-[1000px]:block"
+          className="relative flex min-h-[430px] flex-col items-center justify-center py-4"
         >
-          {isProfileOpen ? (
-            <div
-              id="profile-image-dialog"
-              role="dialog"
-              aria-modal="false"
-              aria-label="Enlarged profile picture of Akshita Sarda"
-              className="relative z-20 w-[225px] shrink-0 overflow-hidden rounded-[1.75rem] border border-white/15 bg-neutral-950/90 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.55)] backdrop-blur-xl min-[1000px]:absolute min-[1000px]:left-0 min-[1000px]:top-3"
-            >
-              <button
-                type="button"
-                onClick={() => setIsProfileOpen(false)}
-                aria-label="Close profile picture"
-                className="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-black/70 text-white backdrop-blur-md transition hover:scale-105 hover:bg-black/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
-              >
-                <X className="h-4 w-4" />
-              </button>
-              <img
-                src="/Akshita_Profile.webp"
-                alt="Akshita Sarda wearing a black blazer"
-                className="block h-[300px] w-full rounded-[1.3rem] object-contain"
-              />
-            </div>
-          ) : null}
-
-          <div className="w-full max-w-3xl space-y-6 text-center min-[1000px]:mx-auto min-[1000px]:flex min-[1000px]:min-h-[400px] min-[1000px]:flex-col min-[1000px]:justify-center">
+          <div className="mx-auto flex min-h-[400px] w-full max-w-3xl flex-col justify-center space-y-6 text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/60 px-3 py-1">
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
               <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
