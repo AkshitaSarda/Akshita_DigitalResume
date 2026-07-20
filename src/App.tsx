@@ -7,9 +7,6 @@ import {
   GraduationCap,
   Languages,
   Layers,
-  Mail,
-  MapPin,
-  Phone,
   Sparkles,
   // MessageSquare, // Chatbot disabled temporarily
   // Send, // Chatbot disabled temporarily
@@ -429,51 +426,17 @@ export default function App() {
           id="hero-profile-section"
           className="relative flex min-h-[430px] flex-col items-center justify-center py-4"
         >
-          <div className="mx-auto flex min-h-[400px] w-full max-w-4xl flex-col justify-center space-y-6 text-center">
-            <div className="space-y-2">
+          <div className="mx-auto flex min-h-[400px] w-full max-w-4xl flex-col items-center justify-center space-y-6 text-center">
+            <div className="space-y-2 text-center">
               <h1 className="shimmer-text text-4xl font-light tracking-tight md:text-6xl">Akshita Sarda</h1>
               <h2 className="text-xl font-medium tracking-wide text-blue-400 md:text-2xl">
                 System Engineer | Application Support Executive
               </h2>
             </div>
 
-            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-neutral-400 md:text-base">
+            <p className="mx-auto max-w-2xl text-center text-sm leading-relaxed text-neutral-400 md:text-base">
               Application Support Executive experienced in supporting the TCS BaNCS Core Banking Application for SBI. Skilled in production support, incident and change management, batch monitoring, SQL querying, root-cause analysis, and banking operations support.
             </p>
-
-            <div className="mx-auto flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-neutral-400">
-              <a
-                href="mailto:akshita2k2@gmail.com"
-                className="flex items-center gap-1.5 transition hover:text-blue-300"
-              >
-                <Mail className="h-3.5 w-3.5" />
-                akshita2k2@gmail.com
-              </a>
-              <a href="tel:+919413586475" className="flex items-center gap-1.5 transition hover:text-blue-300">
-                <Phone className="h-3.5 w-3.5" />
-                +91 9413586475
-              </a>
-              <span className="flex items-center gap-1.5">
-                <MapPin className="h-3.5 w-3.5" />
-                SBI, Belapur
-              </span>
-            </div>
-
-            <div className="mx-auto grid max-w-lg grid-cols-1 gap-3 pt-4 sm:grid-cols-3">
-              {[
-                ['B.Sc. IT', 'Information Technology'],
-                ['TCS / SBI', 'Core Banking Support'],
-                ['EOD · SOD · DR', 'Operations Experience'],
-              ].map(([value, label]) => (
-                <div
-                  key={label}
-                  className="glass-panel rounded-3xl border-white/10 bg-white/[0.04] p-3 text-center backdrop-blur-xl"
-                >
-                  <div className="text-xl font-bold text-white">{value}</div>
-                  <div className="mt-1 text-[9px] uppercase tracking-widest text-neutral-500">{label}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
