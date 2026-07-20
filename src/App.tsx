@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   Activity,
+  ArrowDown,
   Award,
   Briefcase,
   Download,
@@ -424,19 +425,63 @@ export default function App() {
       <main className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-16 px-4 pb-24 pt-8 md:px-8">
         <section
           id="hero-profile-section"
-          className="relative flex min-h-[430px] flex-col items-center justify-center py-4"
+          className="relative flex min-h-[560px] flex-col items-center justify-center overflow-hidden py-10 md:min-h-[620px]"
         >
-          <div className="mx-auto flex min-h-[400px] w-full max-w-4xl flex-col items-center justify-center space-y-6 text-center">
-            <div className="space-y-2 text-center">
-              <h1 className="shimmer-text text-4xl font-light tracking-tight md:text-6xl">Akshita Sarda</h1>
-              <h2 className="text-xl font-medium tracking-wide text-blue-400 md:text-2xl">
-                System Engineer | Application Support Executive
-              </h2>
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute left-[9%] top-[18%] h-px w-28 bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent" />
+            <div className="absolute right-[10%] top-[28%] h-px w-36 bg-gradient-to-r from-transparent via-purple-400/60 to-transparent" />
+            <div className="absolute left-1/2 top-[43%] h-[220px] w-[720px] -translate-x-1/2 rounded-full bg-cyan-500/[0.045] blur-[90px]" />
+          </div>
+
+          <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center justify-center text-center">
+            <div className="relative w-full">
+              <div className="pointer-events-none absolute left-[24%] top-[56%] hidden h-6 w-32 -skew-x-12 bg-[#030307] shadow-[0_0_26px_rgba(34,211,238,0.18)] md:block" />
+              <div className="pointer-events-none absolute right-[22%] top-[56%] hidden h-6 w-36 skew-x-12 bg-[#030307] shadow-[0_0_26px_rgba(168,85,247,0.16)] md:block" />
+
+              <h1 className="relative text-[clamp(3.2rem,10vw,8.7rem)] font-black uppercase leading-[0.84] tracking-[-0.065em] text-white">
+                <span className="block sm:inline">Akshita</span>{' '}
+                <span className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-purple-500 bg-clip-text text-transparent">
+                  Sarda
+                </span>
+              </h1>
             </div>
 
-            <p className="mx-auto max-w-2xl text-center text-sm leading-relaxed text-neutral-400 md:text-base">
-              Application Support Executive experienced in supporting the TCS BaNCS Core Banking Application for SBI. Skilled in production support, incident and change management, batch monitoring, SQL querying, root-cause analysis, and banking operations support.
+            <h2 className="mt-7 font-mono text-xs font-semibold uppercase tracking-[0.24em] text-slate-300 sm:text-sm md:text-lg md:tracking-[0.3em]">
+              System Engineer <span className="text-cyan-400">·</span> TCS BaNCS Support Specialist
+            </h2>
+
+            <p className="mt-5 max-w-3xl font-mono text-sm leading-7 text-slate-400 md:text-base md:leading-8">
+              Managing SBI core banking production operations and supporting critical business services.
+              <br className="hidden md:block" /> Monitoring EOD/SOD batches, resolving incidents, validating data with SQL, and supporting service continuity.
             </p>
+
+            <div className="mt-8 flex w-full max-w-xl flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+              <a
+                href="#spatial-journey-section"
+                className="group relative inline-flex min-h-12 flex-1 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-cyan-400 via-sky-400 to-fuchsia-500 px-6 text-sm font-extrabold uppercase tracking-wide text-slate-950 shadow-[0_0_32px_rgba(34,211,238,0.2)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_42px_rgba(168,85,247,0.28)]"
+              >
+                <span className="absolute inset-0 translate-x-[-110%] bg-gradient-to-r from-transparent via-white/35 to-transparent transition-transform duration-700 group-hover:translate-x-[110%]" />
+                <span className="relative">Explore Journey</span>
+              </a>
+
+              <a
+                href="/Akshita_Sarda_Resume.pdf"
+                download="Akshita_Sarda_Resume.pdf"
+                className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl border border-cyan-300/20 bg-slate-950/55 px-6 text-sm font-bold uppercase tracking-wide text-slate-100 backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/45 hover:bg-cyan-400/[0.08] hover:text-cyan-100"
+              >
+                <Download className="h-4 w-4 text-cyan-300" />
+                Download Resume
+              </a>
+            </div>
+
+            <a
+              href="#spatial-journey-section"
+              aria-label="Scroll to career journey"
+              className="mt-7 inline-flex flex-col items-center gap-2 font-mono text-[10px] uppercase tracking-[0.28em] text-slate-500 transition hover:text-cyan-300"
+            >
+              Scroll to begin
+              <ArrowDown className="h-5 w-5 animate-bounce text-cyan-400" />
+            </a>
           </div>
         </section>
 
