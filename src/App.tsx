@@ -430,13 +430,6 @@ export default function App() {
           className="relative flex min-h-[430px] flex-col items-center justify-center py-4"
         >
           <div className="mx-auto flex min-h-[400px] w-full max-w-4xl flex-col justify-center space-y-6 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/60 px-3 py-1">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
-              <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
-                SYS_ONLINE: SYSTEM ENGINEER
-              </span>
-            </div>
-
             <div className="space-y-2">
               <h1 className="shimmer-text text-4xl font-light tracking-tight md:text-6xl">Akshita Sarda</h1>
               <h2 className="text-xl font-medium tracking-wide text-blue-400 md:text-2xl">
