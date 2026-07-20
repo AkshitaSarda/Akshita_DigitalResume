@@ -1,10 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   Activity,
-  Cloud,
-  Cpu,
+  Award,
+  Briefcase,
   Download,
+  GraduationCap,
+  Languages,
   Layers,
+  Mail,
+  MapPin,
+  Phone,
   Sparkles,
   // MessageSquare, // Chatbot disabled temporarily
   // Send, // Chatbot disabled temporarily
@@ -45,7 +50,7 @@ export default function App() {
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([
     {
       role: 'assistant',
-      content: "Hello! I am Akshita's AI Twin. Ask me anything about her cloud infrastructure projects, frontend design philosophy, or her journey from junior developer to Lead Architect.",
+      content: "Hello! I am Akshita's AI Twin. Ask me about her TCS BaNCS production support experience, core banking operations, technical skills, or education.",
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     },
   ]);
@@ -60,93 +65,92 @@ export default function App() {
 
   const milestones: Milestone[] = [
     {
-      year: '2018 - 2020',
-      title: 'Junior Full-Stack Developer',
-      role: 'System Foundations',
+      year: 'Aug 2021 - Aug 2024',
+      title: 'Bachelor of Science in Information Technology',
+      role: 'Amity University Rajasthan',
       description:
-        'Laid down core software engineering foundations. Focused on building high-performance TypeScript/React user interfaces backed by robust Node.js microservices.',
+        'Completed a Bachelor of Science in Information Technology, building a strong foundation in software, databases, operating systems, and IT service concepts.',
       achievements: [
-        'Architected clean state engines using React context and Redux, reducing screen latency by 40%.',
-        'Designed schema migrations for MySQL and MongoDB, ensuring robust data normalization.',
-        'Created VisionOS-inspired layered interface templates with high functional modularity.',
+        'Completed a three-year B.Sc. in Information Technology.',
+        'Developed the technical foundation used in current Unix, Linux, SQL, and shell-scripting work.',
+        'Strengthened communication and collaboration skills across academic and team environments.',
       ],
       metrics: [
-        { label: 'Bugs Crushed', value: '1,200+' },
-        { label: 'Uptime Achieved', value: '99.9%' },
-        { label: 'PRs Merged', value: '350+' },
+        { label: 'Degree', value: 'B.Sc. IT' },
+        { label: 'Duration', value: '3 Years' },
+        { label: 'Institution', value: 'Amity University' },
       ],
-      tags: ['React', 'TypeScript', 'Node.js', 'Express', 'SQL', 'Git'],
+      tags: ['IT Fundamentals', 'Databases', 'Operating Systems', 'Software Engineering', 'Communication'],
     },
     {
-      year: '2020 - 2023',
-      title: 'Senior Cloud Solutions Architect',
-      role: 'High-Scale Orchestration',
+      year: 'Sep 2024 - Present',
+      title: 'Application Support Executive',
+      role: 'Tata Consultancy Services | State Bank of India, Belapur',
       description:
-        'Advanced into designing self-healing, automated cloud infrastructure. Championed massive GCP/AWS migrations and established scalable serverless deployment engines.',
+        'Supporting the TCS BaNCS Core Banking Application for SBI through production monitoring, incident resolution, data validation, batch operations, and cross-functional coordination.',
       achievements: [
-        'Spearheaded complete migration of a legacy logistics service to GCP GKE (Kubernetes), scaling to 5M+ active daily requests.',
-        'Implemented Docker containerization and CI/CD pipelines with GitHub Actions, reducing delivery cycles by 60%.',
-        'Optimized cloud spend through automated node-autoscaling rules, saving $85K+ annually.',
+        'Provide application and production support for critical banking applications and business processes.',
+        'Monitor End-of-Day, Start-of-Day, and batch-processing activities to ensure smooth execution.',
+        'Investigate application issues, perform root-cause analysis, and coordinate with development teams for resolution.',
+        'Create and execute SQL queries for data validation, troubleshooting, verification, and reconciliation.',
+        'Manage incident tickets, status reports, issue trackers, and process documentation within defined SLAs.',
+        'Support deployments, post-release validation, defect tracking, testing, and production support activities.',
+        'Participate in DR drills and fail-over switch activities for the Core Banking System.',
       ],
       metrics: [
-        { label: 'Scale Handled', value: '5M req/day' },
-        { label: 'Deployment Cost', value: '-35%' },
-        { label: 'Serverless Functions', value: '120+' },
+        { label: 'Employer', value: 'TCS' },
+        { label: 'Client', value: 'SBI' },
+        { label: 'Location', value: 'Belapur' },
       ],
-      tags: ['Docker', 'Kubernetes', 'GCP', 'AWS', 'Terraform', 'CI/CD', 'Prometheus'],
-    },
-    {
-      year: '2023 - Present',
-      title: 'Lead Creative Technologist & Spatial Developer',
-      role: 'Spatial Intelligence & AI Systems',
-      description:
-        'Pioneering the intersection of AI modeling and fluid spatial computing layout. Designing highly tactile browser canvases and secure AI agents for global enterprises.',
-      achievements: [
-        'Crafted custom browser rendering canvases using WebGL and Canvas2D, simulating multi-dimensional spatial depth.',
-        'Integrated secure, server-side Gemini 3.5 LLM endpoints, powering intelligent multi-agent business classifiers.',
-        'Authored custom UI systems that map head-pose tracking vector arrays onto viewport scroll coordinates.',
+      tags: [
+        'Unix',
+        'Linux',
+        'SQL',
+        'Autosys',
+        'Shell Scripting',
+        'Production Support',
+        'Incident Management',
+        'Change Management',
+        'Batch Monitoring',
+        'Root Cause Analysis',
+        'Core Banking',
+        'IT Service Management',
       ],
-      metrics: [
-        { label: 'AI Pipeline speed', value: '180ms' },
-        { label: 'WebGL Render Rate', value: '60 FPS' },
-        { label: 'User Satisfaction', value: '98.7%' },
-      ],
-      tags: ['Gemini SDK', 'WebGL', 'Vite', 'Tailwind v4', 'Next.js', 'Agentic Workflows'],
     },
   ];
 
   const projects: Project[] = [
     {
-      title: 'VisionOS Spatial Browser Simulator',
+      title: 'Core Banking Production Support',
       description:
-        'A gorgeous, high-performance browser interface that replicates spatial gaze, depth layers, and glassmorphism directly inside standard web viewports.',
-      category: 'Spatial Computing',
-      metrics: '60 FPS Render Rate',
-      vibe: 'Glassmorphic Layering',
+        'Supports the TCS BaNCS Core Banking Application for SBI, helping maintain uninterrupted services across critical banking applications and business processes.',
+      category: 'Banking Operations',
+      metrics: 'TCS BaNCS / SBI',
+      vibe: 'Production Reliability',
     },
     {
-      title: 'Spatial Cloud Distributed Pipeline',
+      title: 'Incident, Change & SLA Management',
       description:
-        'An automated multi-cloud data pipeline that handles parallel model-training workflows through layered visualization cards and real-time telemetry widgets.',
-      category: 'Cloud & DevOps',
-      metrics: '99.99% Availability',
-      vibe: 'Layered Telemetry',
+        'Investigates application issues, performs root-cause analysis, manages incident tickets, and coordinates with development, infrastructure, and business stakeholders.',
+      category: 'IT Service Management',
+      metrics: 'SLA-Focused Resolution',
+      vibe: 'Operational Control',
     },
     {
-      title: 'Gemini-Powered Professional Clone',
+      title: 'EOD, Batch & DR Operations',
       description:
-        'A context-aware digital twin API proxy that uses system-prompt guidance to represent professional experience to visiting recruiters in real time.',
-      category: 'Generative AI',
-      metrics: '180ms Token Latency',
-      vibe: 'Neural Intelligence',
+        'Monitors EOD, SOD, and batch processing; validates releases and banking data; and participates in DR drills and fail-over switch activities.',
+      category: 'Business Continuity',
+      metrics: 'EOD / SOD / DR',
+      vibe: 'Service Continuity',
     },
   ];
 
   /* CHATBOT DISABLED TEMPORARILY
   const presetSuggestions = [
-    "Tell me about Akshita's Cloud architecture experience.",
-    'What spatial computing projects has she built?',
-    'How did she start her IT journey?',
+    "Tell me about Akshita's TCS and SBI experience.",
+    'What are her core production support skills?',
+    'How does she support EOD, batch, and DR operations?',
   ];
 
   useEffect(() => {
@@ -425,32 +429,48 @@ export default function App() {
           id="hero-profile-section"
           className="relative flex min-h-[430px] flex-col items-center justify-center py-4"
         >
-          <div className="mx-auto flex min-h-[400px] w-full max-w-3xl flex-col justify-center space-y-6 text-center">
+          <div className="mx-auto flex min-h-[400px] w-full max-w-4xl flex-col justify-center space-y-6 text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/60 px-3 py-1">
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
               <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
-                SYS_ONLINE: ACTIVE ARCHITECT
+                SYS_ONLINE: SYSTEM ENGINEER
               </span>
             </div>
 
             <div className="space-y-2">
-              <h1 className="shimmer-text text-4xl font-light tracking-tight md:text-6xl">Akshita</h1>
+              <h1 className="shimmer-text text-4xl font-light tracking-tight md:text-6xl">Akshita Sarda</h1>
               <h2 className="text-xl font-medium tracking-wide text-blue-400 md:text-2xl">
-                Lead Solutions Architect & Creative Technologist
+                System Engineer | Application Support Executive
               </h2>
             </div>
 
             <p className="mx-auto max-w-2xl text-sm leading-relaxed text-neutral-400 md:text-base">
-              Designing next-generation cloud architectures and tactile spatial computer user interfaces. Leveraging
-              heavy full-stack structures (TS/Node), cloud scalability models, and real-time generative intelligence to
-              construct high-performance digital products.
+              Application Support Executive experienced in supporting the TCS BaNCS Core Banking Application for SBI. Skilled in production support, incident and change management, batch monitoring, SQL querying, root-cause analysis, and banking operations support.
             </p>
+
+            <div className="mx-auto flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-neutral-400">
+              <a
+                href="mailto:akshita2k2@gmail.com"
+                className="flex items-center gap-1.5 transition hover:text-blue-300"
+              >
+                <Mail className="h-3.5 w-3.5" />
+                akshita2k2@gmail.com
+              </a>
+              <a href="tel:+919413586475" className="flex items-center gap-1.5 transition hover:text-blue-300">
+                <Phone className="h-3.5 w-3.5" />
+                +91 9413586475
+              </a>
+              <span className="flex items-center gap-1.5">
+                <MapPin className="h-3.5 w-3.5" />
+                SBI, Belapur
+              </span>
+            </div>
 
             <div className="mx-auto grid max-w-lg grid-cols-1 gap-3 pt-4 sm:grid-cols-3">
               {[
-                ['08+', 'Years IT Exp'],
-                ['99.9%', 'Infrastructure Uptime'],
-                ['14+', 'Enterprise Deploys'],
+                ['B.Sc. IT', 'Information Technology'],
+                ['TCS / SBI', 'Core Banking Support'],
+                ['EOD · SOD · DR', 'Operations Experience'],
               ].map(([value, label]) => (
                 <div
                   key={label}
@@ -473,22 +493,22 @@ export default function App() {
               <div className="flex items-center gap-2">
                 <Activity className="h-4 w-4 text-purple-400" />
                 <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
-                  Career Temporal Path
+                  Resume Career Path
                 </span>
               </div>
-              <h2 className="mt-1 text-xl font-light md:text-2xl">Spatial Journey Thread</h2>
+              <h2 className="mt-1 text-xl font-light md:text-2xl">Education & Professional Experience</h2>
             </div>
 
             <div className="glass-panel flex items-center gap-6 rounded-xl p-3 font-mono text-xs">
               <div>
-                <span className="block text-[9px] text-neutral-500">ACTIVE PHASE</span>
+                <span className="block text-[9px] text-neutral-500">SELECTED PHASE</span>
                 <span className="text-lg font-bold text-blue-400">
                   {String(currentMilestoneIdx + 1).padStart(2, '0')} / {String(milestones.length).padStart(2, '0')}
                 </span>
               </div>
               <div className="h-8 w-px bg-neutral-800" />
               <div>
-                <span className="block text-[9px] text-neutral-500">SPATIAL SYNC</span>
+                <span className="block text-[9px] text-neutral-500">PROFILE STATUS</span>
                 <span className="text-lg font-bold uppercase text-emerald-400">ACTIVE</span>
               </div>
             </div>
@@ -510,7 +530,7 @@ export default function App() {
                 <div className="absolute bottom-0 h-2 w-16 animate-pulse rounded-full bg-blue-500/40 blur-xs" />
                 <div className="flex h-6 w-20 items-center justify-center rounded-full border border-white/20 bg-white/10 shadow-lg backdrop-blur-md">
                   <Sparkles className="h-3 w-3 animate-spin text-blue-400" />
-                  <span className="ml-1 font-mono text-[8px] tracking-widest text-neutral-300">VISION_POD</span>
+                  <span className="ml-1 font-mono text-[8px] tracking-widest text-neutral-300">CAREER_NODE</span>
                 </div>
               </div>
             </div>
@@ -531,11 +551,9 @@ export default function App() {
                     }`}
                   >
                     {index === 0 ? (
-                      <Cpu className="h-3 w-3" />
-                    ) : index === 1 ? (
-                      <Cloud className="h-3 w-3" />
+                      <GraduationCap className="h-3 w-3" />
                     ) : (
-                      <Sparkles className="h-3 w-3" />
+                      <Briefcase className="h-3 w-3" />
                     )}
                   </div>
                   <span
@@ -566,7 +584,7 @@ export default function App() {
 
               <div className="space-y-3">
                 <span className="block text-[10px] font-bold uppercase tracking-widest text-neutral-500">
-                  Key Engagements
+                  Highlights & Responsibilities
                 </span>
                 {activeMilestone.achievements.map((achievement) => (
                   <div key={achievement} className="flex items-start gap-3">
@@ -580,7 +598,7 @@ export default function App() {
             <div className="flex flex-col gap-4 lg:col-span-4">
               <div className="flex-1 rounded-3xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-2xl">
                 <span className="mb-3 block text-[10px] font-bold uppercase tracking-widest text-neutral-500">
-                  Diagnostic Yields
+                  Profile Snapshot
                 </span>
                 <div className="space-y-4">
                   {activeMilestone.metrics.map((metric) => (
@@ -594,7 +612,7 @@ export default function App() {
 
               <div className="flex-1 rounded-3xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-2xl">
                 <span className="mb-3 block text-[10px] font-bold uppercase tracking-widest text-neutral-500">
-                  System Libraries
+                  Skills & Tools
                 </span>
                 <div className="flex flex-wrap gap-1.5">
                   {activeMilestone.tags.map((tag) => (
@@ -616,12 +634,12 @@ export default function App() {
             <div className="flex items-center gap-2">
               <Layers className="h-4 w-4 text-blue-400" />
               <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
-                Layered Spatial Windows
+                Professional Capability Areas
               </span>
             </div>
-            <h2 className="mt-1 text-2xl font-light md:text-3xl">Gaze-Response Project Deck</h2>
+            <h2 className="mt-1 text-2xl font-light md:text-3xl">Core Banking Support Expertise</h2>
             <p className="mt-1 font-mono text-xs text-neutral-500">
-              [Hover over cards below to experience 3D Spatial Gaze Tilt]
+              [Hover over the cards to explore key responsibilities]
             </p>
           </div>
 
@@ -645,7 +663,7 @@ export default function App() {
                       {project.category}
                     </span>
                     <span className="font-mono text-[10px] text-neutral-500">
-                      VIBE: {project.vibe.toUpperCase()}
+                      FOCUS: {project.vibe.toUpperCase()}
                     </span>
                   </div>
 
@@ -655,12 +673,42 @@ export default function App() {
                   </div>
 
                   <div className="flex items-center justify-between border-t border-neutral-800 pt-3">
-                    <span className="text-[9px] uppercase tracking-widest text-neutral-500">Diagnostic Yield</span>
+                    <span className="text-[9px] uppercase tracking-widest text-neutral-500">Scope</span>
                     <span className="font-mono text-xs font-bold text-purple-400">{project.metrics}</span>
                   </div>
                 </div>
               );
             })}
+          </div>
+        </section>
+
+        <section id="additional-information-section" className="space-y-8">
+          <div>
+            <div className="flex items-center gap-2">
+              <Sparkles className="h-4 w-4 text-purple-400" />
+              <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
+                Resume Highlights
+              </span>
+            </div>
+            <h2 className="mt-1 text-2xl font-light md:text-3xl">Additional Information</h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="glass-panel rounded-[32px] border-white/10 p-7">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-400">
+                <Languages className="h-5 w-5" />
+              </div>
+              <h3 className="text-base font-bold text-white">Languages</h3>
+              <p className="mt-2 text-sm leading-relaxed text-neutral-400">Hindi, English, and German</p>
+            </div>
+
+            <div className="glass-panel rounded-[32px] border-white/10 p-7">
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-purple-500/10 text-purple-400">
+                <Award className="h-5 w-5" />
+              </div>
+              <h3 className="text-base font-bold text-white">Awards & Activities</h3>
+              <p className="mt-2 text-sm leading-relaxed text-neutral-400">Star Team Award and Best Team Award</p>
+            </div>
           </div>
         </section>
       </main>
@@ -777,15 +825,15 @@ export default function App() {
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 md:flex-row">
           <div className="space-y-1 text-left">
             <span className="block font-mono text-xs uppercase tracking-widest text-white">
-              AKSHITA / IT CAREER JOURNAL
+              AKSHITA SARDA / SYSTEM ENGINEER
             </span>
             <span className="block text-[10px] text-neutral-500">
-              © {new Date().getFullYear()} Akshita. Inspired by VisionOS spatial computing guidelines.
+              © {new Date().getFullYear()} Akshita Sarda. Core Banking Application Support Portfolio.
             </span>
           </div>
 
           <div className="flex gap-4">
-            <span className="font-mono text-[10px] uppercase text-neutral-500">SYS_STABLE: 100%</span>
+            <span className="font-mono text-[10px] uppercase text-neutral-500">SUPPORT_STATUS: ACTIVE</span>
             <span className="font-mono text-[10px] uppercase text-neutral-500">VITE_BUILD: OK</span>
           </div>
         </div>
