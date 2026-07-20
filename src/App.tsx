@@ -159,19 +159,12 @@ export default function App() {
   useEffect(() => {
     if (!isProfileOpen) return;
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setIsProfileOpen(false);
     };
 
     window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', handleKeyDown);
-    };
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isProfileOpen]);
 
   useEffect(() => {
@@ -390,8 +383,8 @@ export default function App() {
           <div className="flex items-center gap-3 pl-2 md:pl-4">
             <button
               type="button"
-              onClick={() => setIsProfileOpen(true)}
-              aria-label="Open Akshita Sarda profile picture"
+              onClick={() => setIsProfileOpen((open) => !open)}
+              aria-label={isProfileOpen ? 'Hide Akshita Sarda profile picture' : 'Enlarge Akshita Sarda profile picture'}
               aria-haspopup="dialog"
               aria-expanded={isProfileOpen}
               aria-controls="profile-image-dialog"
@@ -430,39 +423,36 @@ export default function App() {
         </div>
       </header>
 
-      {isProfileOpen ? (
-        <div
-          id="profile-image-dialog"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Akshita Sarda profile picture"
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-md"
-          onClick={() => setIsProfileOpen(false)}
-        >
-          <div
-            className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-neutral-950/95 shadow-[0_30px_100px_rgba(0,0,0,0.75)]"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={() => setIsProfileOpen(false)}
-              aria-label="Close profile picture"
-              className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/65 text-white backdrop-blur-md transition hover:scale-105 hover:bg-black/85 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
-            >
-              <X className="h-5 w-5" />
-            </button>
-            <img
-              src="/Akshita_Profile.webp"
-              alt="Akshita Sarda wearing a black blazer"
-              className="block max-h-[90vh] max-w-[92vw] object-contain"
-            />
-          </div>
-        </div>
-      ) : null}
-
       <main className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-16 px-4 pb-24 pt-8 md:px-8">
-        <section id="hero-profile-section" className="flex items-center justify-center py-4">
-          <div className="w-full max-w-3xl space-y-6 text-center">
+        <section
+          id="hero-profile-section"
+          className="relative flex min-h-[430px] flex-col items-center justify-center gap-8 py-4 min-[1000px]:block"
+        >
+          {isProfileOpen ? (
+            <div
+              id="profile-image-dialog"
+              role="dialog"
+              aria-modal="false"
+              aria-label="Enlarged profile picture of Akshita Sarda"
+              className="relative z-20 w-[225px] shrink-0 overflow-hidden rounded-[1.75rem] border border-white/15 bg-neutral-950/90 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.55)] backdrop-blur-xl min-[1000px]:absolute min-[1000px]:left-0 min-[1000px]:top-3"
+            >
+              <button
+                type="button"
+                onClick={() => setIsProfileOpen(false)}
+                aria-label="Close profile picture"
+                className="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-black/70 text-white backdrop-blur-md transition hover:scale-105 hover:bg-black/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+              >
+                <X className="h-4 w-4" />
+              </button>
+              <img
+                src="/Akshita_Profile.webp"
+                alt="Akshita Sarda wearing a black blazer"
+                className="block h-[300px] w-full rounded-[1.3rem] object-contain"
+              />
+            </div>
+          ) : null}
+
+          <div className="w-full max-w-3xl space-y-6 text-center min-[1000px]:mx-auto min-[1000px]:flex min-[1000px]:min-h-[400px] min-[1000px]:flex-col min-[1000px]:justify-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/60 px-3 py-1">
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
               <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
