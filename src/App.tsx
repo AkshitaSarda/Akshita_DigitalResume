@@ -451,7 +451,7 @@ export default function App() {
             </h2>
 
             <p className="mt-5 max-w-3xl font-mono text-sm leading-7 text-slate-400 md:text-base md:leading-8">
-              Managing SBI core banking production operations and supporting critical business services.
+              Managing enterprise SBI Core Banking production environments.Optimizing high-scale databases and automating critical overnight batches.
               <br className="hidden md:block" /> Monitoring EOD/SOD batches, resolving incidents, validating data with SQL, and supporting service continuity.
             </p>
 
