@@ -2,14 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
   Activity,
   Cloud,
-  Compass,
   Cpu,
   Download,
   Layers,
   Sparkles,
   // MessageSquare, // Chatbot disabled temporarily
   // Send, // Chatbot disabled temporarily
-  // X, // Chatbot disabled temporarily
+  X,
 } from 'lucide-react';
 
 interface Milestone {
@@ -40,6 +39,7 @@ interface ChatMessage {
 
 export default function App() {
   const [currentMilestoneIdx, setCurrentMilestoneIdx] = useState<number>(0);
+  const [isProfileOpen, setIsProfileOpen] = useState<boolean>(false);
 
   /* CHATBOT DISABLED TEMPORARILY
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
@@ -155,6 +155,24 @@ export default function App() {
     chatBottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [chatHistory, isChatLoading]);
   */
+
+  useEffect(() => {
+    if (!isProfileOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsProfileOpen(false);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isProfileOpen]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -369,10 +387,24 @@ export default function App() {
 
       <header id="header-nav" className="sticky top-0 z-50 w-full px-4 py-3 md:px-8">
         <div className="glass-panel mx-auto flex max-w-7xl items-center justify-between rounded-full border-white/10 bg-white/5 p-2 shadow-lg backdrop-blur-md">
-          <div className="flex items-center gap-3 pl-4">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-blue-500 to-purple-600">
-              <Compass className="h-4 w-4 text-white" />
-            </div>
+          <div className="flex items-center gap-3 pl-2 md:pl-4">
+            <button
+              type="button"
+              onClick={() => setIsProfileOpen(true)}
+              aria-label="Open Akshita Sarda profile picture"
+              aria-haspopup="dialog"
+              aria-expanded={isProfileOpen}
+              aria-controls="profile-image-dialog"
+              className="group relative h-9 w-9 shrink-0 overflow-hidden rounded-full border border-blue-400/50 bg-neutral-900 shadow-[0_0_18px_rgba(59,130,246,0.24)] transition duration-200 hover:scale-105 hover:border-purple-400/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030307]"
+            >
+              <img
+                src="/Akshita_Profile_Thumb.webp"
+                alt=""
+                aria-hidden="true"
+                className="h-full w-full object-cover transition duration-300 group-hover:scale-110"
+              />
+              <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/20" />
+            </button>
             <span className="text-sm font-semibold tracking-[0.25em] text-white">AKSHITA</span>
           </div>
 
@@ -397,6 +429,36 @@ export default function App() {
           */}
         </div>
       </header>
+
+      {isProfileOpen ? (
+        <div
+          id="profile-image-dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Akshita Sarda profile picture"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-md"
+          onClick={() => setIsProfileOpen(false)}
+        >
+          <div
+            className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-neutral-950/95 shadow-[0_30px_100px_rgba(0,0,0,0.75)]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setIsProfileOpen(false)}
+              aria-label="Close profile picture"
+              className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/65 text-white backdrop-blur-md transition hover:scale-105 hover:bg-black/85 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <img
+              src="/Akshita_Profile.webp"
+              alt="Akshita Sarda wearing a black blazer"
+              className="block max-h-[90vh] max-w-[92vw] object-contain"
+            />
+          </div>
+        </div>
+      ) : null}
 
       <main className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-16 px-4 pb-24 pt-8 md:px-8">
         <section id="hero-profile-section" className="flex items-center justify-center py-4">
