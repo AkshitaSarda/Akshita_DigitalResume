@@ -921,12 +921,12 @@ export default function App() {
                 <div className="absolute inset-x-0 bottom-0 h-36 bg-[linear-gradient(rgba(34,211,238,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.06)_1px,transparent_1px)] bg-[size:26px_26px] [mask-image:linear-gradient(to_top,black,transparent)]" />
               </div>
 
-              <div className="relative flex min-h-[390px] flex-col items-center justify-center pt-6">
-                <div className="relative h-[300px] w-[230px] overflow-hidden rounded-[30px] border border-cyan-300/25 bg-slate-950/80 p-1.5 shadow-[0_0_45px_rgba(34,211,238,0.14)] sm:h-[330px] sm:w-[250px]">
+              <div className="relative flex min-h-[390px] w-full flex-1 flex-col items-center justify-center py-8">
+                <div className="relative mx-auto h-[300px] w-[230px] self-center overflow-hidden rounded-[30px] border border-cyan-300/25 bg-slate-950/80 p-1.5 shadow-[0_0_45px_rgba(34,211,238,0.14)] sm:h-[330px] sm:w-[250px]">
                   <img
                     src="/Akshita_Profile.webp"
                     alt="Akshita Sarda"
-                    className="h-full w-full rounded-[25px] object-cover object-top"
+                    className="h-full w-full rounded-[25px] object-cover object-center"
                   />
                   <div className="pointer-events-none absolute inset-1.5 rounded-[25px] bg-gradient-to-t from-[#030307]/55 via-transparent to-cyan-300/[0.03]" />
                 </div>
