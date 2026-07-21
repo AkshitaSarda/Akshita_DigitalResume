@@ -714,7 +714,7 @@ export default function App() {
             />
 
             <div
-              className="absolute bottom-[23px] z-10 transition-all duration-1000 ease-out"
+              className="absolute bottom-[56px] z-10 transition-all duration-1000 ease-out"
               style={{ left: `calc(${milestoneProgress}% - ${milestoneProgress * 0.96}px)` }}
             >
               <div className="relative flex h-10 w-24 flex-col items-center justify-center">
