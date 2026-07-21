@@ -323,8 +323,8 @@ export default function App() {
       </div>
 
       <header id="header-nav" className="sticky top-0 z-50 w-full px-4 py-3 md:px-8">
-        <div className="glass-panel mx-auto flex max-w-7xl items-center justify-between rounded-full border-white/10 bg-white/5 p-2 shadow-lg backdrop-blur-md">
-          <div className="flex items-center gap-3 pl-2 md:pl-4">
+        <div className="glass-panel mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center rounded-full border-white/10 bg-white/5 p-2 shadow-lg backdrop-blur-md">
+          <div className="flex min-w-0 items-center gap-3 pl-2 md:pl-4">
             <div className="group/profile relative shrink-0">
               <button
                 type="button"
@@ -352,18 +352,20 @@ export default function App() {
                 />
               </div>
             </div>
-            <span className="text-sm font-semibold tracking-[0.25em] text-white">AKSHITA</span>
+            <span className="truncate text-sm font-semibold tracking-[0.25em] text-white">AKSHITA</span>
           </div>
 
-          <nav aria-label="Primary navigation" className="mr-2 flex items-center gap-2">
+          <nav aria-label="Primary navigation" className="flex items-center justify-center px-2">
             <a
               href="#experience-section"
-              className="flex items-center gap-1.5 rounded-full border border-purple-500/25 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-purple-200 transition hover:border-purple-400/50 hover:bg-purple-500/15 hover:text-white sm:text-xs"
+              className="group relative px-3 py-2 text-[11px] font-medium tracking-wide text-slate-300 transition hover:text-cyan-300 sm:text-xs"
             >
-              <Briefcase className="h-3.5 w-3.5" />
               Experience
+              <span className="absolute inset-x-3 -bottom-0.5 h-px origin-center scale-x-0 bg-gradient-to-r from-cyan-400 to-purple-500 transition-transform duration-200 group-hover:scale-x-100" />
             </a>
+          </nav>
 
+          <div className="flex justify-end pr-0.5 md:pr-2">
             <a
               href="/Akshita_Sarda_Resume.pdf"
               download="Akshita_Sarda_Resume.pdf"
@@ -374,7 +376,7 @@ export default function App() {
               <span className="hidden sm:inline">Download Resume</span>
               <span className="sm:hidden">Resume</span>
             </a>
-          </nav>
+          </div>
 
           {/* CHATBOT DISABLED TEMPORARILY
           <button
