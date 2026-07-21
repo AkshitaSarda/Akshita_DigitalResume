@@ -902,7 +902,7 @@ export default function App() {
         </section>
 
         <section id="experience-section" className="scroll-mt-28 space-y-8">
-          <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+          <div className="grid gap-5 lg:grid-cols-[1.05fr_1fr] lg:items-end">
             <div>
               <div className="flex items-center gap-2">
                 <Briefcase className="h-4 w-4 text-fuchsia-400" />
@@ -915,7 +915,7 @@ export default function App() {
               </h2>
             </div>
 
-            <p className="max-w-lg font-mono text-xs leading-relaxed text-slate-400 lg:justify-self-end">
+            <p className="w-full text-center font-mono text-xs leading-relaxed text-slate-400">
               Production-focused experience supporting SBI Core Banking systems, critical batch cycles, incident
               resolution, data validation, and service-continuity activities.
             </p>
