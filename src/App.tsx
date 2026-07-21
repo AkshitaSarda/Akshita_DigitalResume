@@ -915,9 +915,9 @@ export default function App() {
               </div>
 
               <div className="pointer-events-none absolute inset-0">
-                <div className="absolute left-1/2 top-[53%] h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/15" />
-                <div className="absolute left-1/2 top-[53%] h-[285px] w-[285px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-400/15" />
-                <div className="absolute left-1/2 top-[53%] h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-cyan-500/[0.06] via-transparent to-purple-500/[0.08] blur-2xl" />
+                <div className="absolute left-1/2 top-[47%] h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/15" />
+                <div className="absolute left-1/2 top-[47%] h-[285px] w-[285px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-400/15" />
+                <div className="absolute left-1/2 top-[47%] h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-cyan-500/[0.06] via-transparent to-purple-500/[0.08] blur-2xl" />
                 <div className="absolute inset-x-0 bottom-0 h-36 bg-[linear-gradient(rgba(34,211,238,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.06)_1px,transparent_1px)] bg-[size:26px_26px] [mask-image:linear-gradient(to_top,black,transparent)]" />
               </div>
 
