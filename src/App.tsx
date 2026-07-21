@@ -1190,7 +1190,7 @@ export default function App() {
         </section>
 
         <section id="about-section" className="scroll-mt-28 space-y-8">
-          <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+          <div className="grid gap-5 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
             <div>
               <div className="flex items-center gap-2">
                 <Sparkles className="h-4 w-4 text-cyan-300" />
@@ -1206,7 +1206,7 @@ export default function App() {
               </h2>
             </div>
 
-            <p className="max-w-lg font-mono text-xs leading-relaxed text-slate-400 lg:justify-self-end">
+            <p className="w-full text-center font-mono text-xs leading-relaxed text-slate-400">
               A focused overview of my Core Banking production-support experience, technical strengths, education,
               and communication capabilities.
             </p>
