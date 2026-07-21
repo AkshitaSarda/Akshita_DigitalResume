@@ -700,13 +700,14 @@ export default function App() {
           className="relative flex min-h-[500px] flex-col items-center justify-center overflow-hidden py-8 md:min-h-[550px]"
         >
           <div className="pointer-events-none absolute inset-0">
-            <div className="absolute left-[9%] top-[18%] h-px w-28 bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent" />
             <div className="absolute left-1/2 top-[43%] h-[220px] w-[720px] -translate-x-1/2 rounded-full bg-cyan-500/[0.045] blur-[90px]" />
           </div>
 
           <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center justify-center text-center">
             <div className="relative grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3 overflow-visible px-2 sm:gap-5 md:px-5">
-              <div aria-hidden="true" />
+              <div aria-hidden="true" className="hidden min-w-[72px] items-center justify-end pr-3 md:flex md:min-w-[112px] md:pr-5">
+                <span className="h-px min-w-8 flex-1 bg-gradient-to-r from-transparent via-cyan-400/45 to-cyan-400/80" />
+              </div>
 
               <div className="relative justify-self-center overflow-visible">
                 <div className="pointer-events-none absolute left-[24%] top-[56%] hidden h-6 w-32 -skew-x-12 bg-[#030307] shadow-[0_0_26px_rgba(34,211,238,0.18)] md:block" />
@@ -721,7 +722,6 @@ export default function App() {
               </div>
 
               <div aria-hidden="true" className="hidden min-w-[72px] items-center justify-start pl-3 md:flex md:min-w-[112px] md:pl-5">
-                <span className="h-3 w-3 shrink-0 rounded-full border border-purple-300/70 bg-purple-500 shadow-[0_0_18px_rgba(168,85,247,0.85)]" />
                 <span className="h-px min-w-8 flex-1 bg-gradient-to-r from-purple-400/80 via-purple-400/45 to-transparent" />
               </div>
             </div>
