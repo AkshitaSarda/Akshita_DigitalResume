@@ -359,6 +359,7 @@ export default function App() {
             {[
               { label: 'Experience', href: '#experience-section' },
               { label: 'Awards', href: '#awards-section' },
+              { label: 'About', href: '#about-section' },
             ].map((item) => (
               <a
                 key={item.label}
@@ -883,24 +884,133 @@ export default function App() {
           </div>
         </section>
 
-        <section id="additional-information-section" className="space-y-8">
-          <div>
-            <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-purple-400" />
-              <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
-                Resume Highlights
-              </span>
+        <section id="about-section" className="scroll-mt-28 space-y-8">
+          <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+            <div>
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-cyan-300" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-cyan-300">
+                  04 / Professional Profile
+                </span>
+              </div>
+              <h2 className="mt-2 text-3xl font-black uppercase tracking-tight text-white md:text-4xl">
+                About{' '}
+                <span className="bg-gradient-to-r from-cyan-300 to-purple-500 bg-clip-text text-transparent">
+                  Akshita
+                </span>
+              </h2>
             </div>
-            <h2 className="mt-1 text-2xl font-light md:text-3xl">Additional Information</h2>
+
+            <p className="max-w-lg font-mono text-xs leading-relaxed text-slate-400 lg:justify-self-end">
+              A focused overview of my Core Banking production-support experience, technical strengths, education,
+              and communication capabilities.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6">
-            <div className="glass-panel rounded-[32px] border-white/10 p-7">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-400">
-                <Languages className="h-5 w-5" />
+          <div className="grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-stretch">
+            <div className="glass-panel relative min-h-[470px] overflow-hidden rounded-[30px] border-white/10 bg-white/[0.035] p-5 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-white/5 pb-3 font-mono text-[9px] uppercase tracking-widest text-slate-500">
+                <span>Professional Identity</span>
+                <span className="text-cyan-300">TCS · SBI</span>
               </div>
-              <h3 className="text-base font-bold text-white">Languages</h3>
-              <p className="mt-2 text-sm leading-relaxed text-neutral-400">Hindi, English, and German</p>
+
+              <div className="pointer-events-none absolute inset-0">
+                <div className="absolute left-1/2 top-[53%] h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/15" />
+                <div className="absolute left-1/2 top-[53%] h-[285px] w-[285px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-400/15" />
+                <div className="absolute left-1/2 top-[53%] h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-cyan-500/[0.06] via-transparent to-purple-500/[0.08] blur-2xl" />
+                <div className="absolute inset-x-0 bottom-0 h-36 bg-[linear-gradient(rgba(34,211,238,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.06)_1px,transparent_1px)] bg-[size:26px_26px] [mask-image:linear-gradient(to_top,black,transparent)]" />
+              </div>
+
+              <div className="relative flex min-h-[390px] flex-col items-center justify-center pt-6">
+                <div className="relative h-[300px] w-[230px] overflow-hidden rounded-[30px] border border-cyan-300/25 bg-slate-950/80 p-1.5 shadow-[0_0_45px_rgba(34,211,238,0.14)] sm:h-[330px] sm:w-[250px]">
+                  <img
+                    src="/Akshita_Profile.webp"
+                    alt="Akshita Sarda"
+                    className="h-full w-full rounded-[25px] object-cover object-top"
+                  />
+                  <div className="pointer-events-none absolute inset-1.5 rounded-[25px] bg-gradient-to-t from-[#030307]/55 via-transparent to-cyan-300/[0.03]" />
+                </div>
+
+                <div className="mt-5 text-center">
+                  <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-cyan-300">
+                    Akshita Sarda
+                  </p>
+                  <p className="mt-1 font-mono text-[8px] uppercase tracking-[0.18em] text-slate-500">
+                    System Engineer · Core Banking Support
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-center">
+              <h3 className="text-2xl font-bold leading-tight text-white md:text-3xl">
+                Building banking resilience through disciplined production support.
+              </h3>
+              <p className="mt-4 text-sm leading-7 text-slate-400">
+                I am a System Engineer and Application Support Executive at Tata Consultancy Services, supporting the
+                TCS BaNCS Core Banking Application for State Bank of India in Belapur. My work covers production and
+                batch monitoring, incident handling, SQL-based validation, root-cause analysis, deployment support,
+                and coordination across application, infrastructure, development, and business teams.
+              </p>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {[
+                  {
+                    icon: Search,
+                    title: 'Critical Problem Solver',
+                    description: 'Tracing production issues, validating data, reviewing logs, and coordinating durable fixes.',
+                    accent: 'text-cyan-300 border-cyan-400/15 bg-cyan-400/[0.025]',
+                  },
+                  {
+                    icon: ShieldCheck,
+                    title: 'SLA & Incident Agility',
+                    description: 'Managing incidents, trackers, escalations, and service restoration within defined timelines.',
+                    accent: 'text-purple-300 border-purple-400/15 bg-purple-400/[0.025]',
+                  },
+                  {
+                    icon: Settings2,
+                    title: 'Automation Mindset',
+                    description: 'Using Unix, Linux, shell scripting, SQL, and Autosys to support repeatable operations.',
+                    accent: 'text-cyan-300 border-cyan-400/15 bg-cyan-400/[0.025]',
+                  },
+                  {
+                    icon: Activity,
+                    title: 'Business Continuity',
+                    description: 'Supporting EOD/SOD cycles, critical batches, DR drills, and fail-over activities.',
+                    accent: 'text-fuchsia-300 border-fuchsia-400/15 bg-fuchsia-400/[0.025]',
+                  },
+                ].map(({ icon: Icon, title, description, accent }) => (
+                  <article key={title} className={`glass-panel rounded-[20px] border p-4 ${accent}`}>
+                    <div className="flex items-start gap-3">
+                      <Icon className="mt-0.5 h-4 w-4 shrink-0" />
+                      <div>
+                        <h4 className="text-xs font-bold text-white">{title}</h4>
+                        <p className="mt-2 text-[10px] leading-relaxed text-slate-400">{description}</p>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                <article className="glass-panel rounded-[20px] border-white/10 p-4">
+                  <Briefcase className="h-4 w-4 text-cyan-300" />
+                  <span className="mt-3 block font-mono text-[8px] uppercase tracking-widest text-slate-500">Current Role</span>
+                  <p className="mt-1 text-xs font-semibold text-white">TCS · SBI Core Banking</p>
+                </article>
+
+                <article className="glass-panel rounded-[20px] border-white/10 p-4">
+                  <GraduationCap className="h-4 w-4 text-purple-300" />
+                  <span className="mt-3 block font-mono text-[8px] uppercase tracking-widest text-slate-500">Education</span>
+                  <p className="mt-1 text-xs font-semibold text-white">B.Sc. Information Technology</p>
+                </article>
+
+                <article className="glass-panel rounded-[20px] border-white/10 p-4">
+                  <Languages className="h-4 w-4 text-fuchsia-300" />
+                  <span className="mt-3 block font-mono text-[8px] uppercase tracking-widest text-slate-500">Languages</span>
+                  <p className="mt-1 text-xs font-semibold text-white">Hindi · English · German</p>
+                </article>
+              </div>
             </div>
           </div>
         </section>
