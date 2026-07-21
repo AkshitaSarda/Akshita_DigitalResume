@@ -1242,7 +1242,7 @@ export default function App() {
 
 
         <section id="contact-section" className="scroll-mt-28 space-y-8">
-          <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+          <div className="grid gap-5 lg:grid-cols-[1.12fr_0.88fr] lg:items-end">
             <div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-cyan-300" />
@@ -1258,7 +1258,7 @@ export default function App() {
               </h2>
             </div>
 
-            <p className="max-w-lg font-mono text-xs leading-relaxed text-slate-400 lg:justify-self-end">
+            <p className="w-full max-w-[470px] font-mono text-xs leading-relaxed text-slate-400 lg:justify-self-end">
               Initiate a secure terminal packet with Akshita. Use either the command terminal console or standard
               communication lines.
             </p>
