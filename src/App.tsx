@@ -455,22 +455,13 @@ export default function App() {
               <br className="hidden md:block" /> Optimizing high-scale databases and automating critical overnight batches.
             </p>
 
-            <div className="mt-7 flex w-full max-w-lg flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+            <div className="mt-7 flex w-full justify-center">
               <a
                 href="#spatial-journey-section"
-                className="group relative inline-flex min-h-12 flex-1 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-cyan-400 via-sky-400 to-fuchsia-500 px-6 text-sm font-extrabold uppercase tracking-wide text-slate-950 shadow-[0_0_32px_rgba(34,211,238,0.2)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_42px_rgba(168,85,247,0.28)]"
+                className="group relative inline-flex min-h-12 w-full max-w-xs items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-cyan-400 via-sky-400 to-fuchsia-500 px-8 text-sm font-extrabold uppercase tracking-wide text-slate-950 shadow-[0_0_32px_rgba(34,211,238,0.2)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_42px_rgba(168,85,247,0.28)]"
               >
                 <span className="absolute inset-0 translate-x-[-110%] bg-gradient-to-r from-transparent via-white/35 to-transparent transition-transform duration-700 group-hover:translate-x-[110%]" />
                 <span className="relative">Explore Journey</span>
-              </a>
-
-              <a
-                href="/Akshita_Sarda_Resume.pdf"
-                download="Akshita_Sarda_Resume.pdf"
-                className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl border border-cyan-300/20 bg-slate-950/55 px-6 text-sm font-bold uppercase tracking-wide text-slate-100 backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/45 hover:bg-cyan-400/[0.08] hover:text-cyan-100"
-              >
-                <Download className="h-4 w-4 text-cyan-300" />
-                Download Resume
               </a>
             </div>
 
