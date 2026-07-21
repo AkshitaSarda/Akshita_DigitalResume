@@ -66,6 +66,10 @@ export default function App() {
   const [terminalCommand, setTerminalCommand] = useState<string>('');
   const [terminalCommandHistory, setTerminalCommandHistory] = useState<string[]>([]);
   const [terminalHistoryIndex, setTerminalHistoryIndex] = useState<number>(-1);
+  const [contactStatus, setContactStatus] = useState<{
+    state: 'idle' | 'sending' | 'success' | 'error';
+    message: string;
+  }>({ state: 'idle', message: '' });
 
   /* CHATBOT DISABLED TEMPORARILY
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
@@ -533,20 +537,67 @@ export default function App() {
   const activeMilestone = milestones[currentMilestoneIdx];
   const milestoneProgress = (currentMilestoneIdx / (milestones.length - 1)) * 100;
 
-  const handleContactSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleContactSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
+    if (contactStatus.state === 'sending') return;
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const name = String(formData.get('name') || '').trim();
     const email = String(formData.get('email') || '').trim();
     const message = String(formData.get('message') || '').trim();
+    const honey = String(formData.get('_honey') || '').trim();
 
-    const subject = encodeURIComponent(`Portfolio enquiry from ${name || 'website visitor'}`);
-    const body = encodeURIComponent(
-      `Name: ${name || 'Not provided'}\nEmail: ${email || 'Not provided'}\n\nMessage:\n${message}`,
-    );
+    if (!name || !email || !message) {
+      setContactStatus({
+        state: 'error',
+        message: 'Please complete your name, email address, and message.',
+      });
+      return;
+    }
 
-    window.location.href = `mailto:akshita2k2@gmail.com?subject=${subject}&body=${body}`;
+    setContactStatus({ state: 'sending', message: 'Transmitting your message...' });
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/akshita2k2@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          _replyto: email,
+          _subject: `Portfolio enquiry from ${name}`,
+          _template: 'table',
+          _captcha: 'false',
+          _honey: honey,
+        }),
+      });
+
+      const result = await response.json().catch(() => null);
+      const submissionFailed =
+        !response.ok || result?.success === false || result?.success === 'false';
+
+      if (submissionFailed) {
+        throw new Error(result?.message || 'The message could not be delivered.');
+      }
+
+      form.reset();
+      setContactStatus({
+        state: 'success',
+        message: 'Message sent successfully. Akshita will receive it by email.',
+      });
+    } catch (error) {
+      console.error('Contact form error:', error);
+      setContactStatus({
+        state: 'error',
+        message: 'Message could not be sent. Please try again or use the email link below.',
+      });
+    }
   };
 
   return (
@@ -1383,6 +1434,14 @@ export default function App() {
                 onSubmit={handleContactSubmit}
                 className="glass-panel rounded-[24px] border-white/10 bg-white/[0.035] p-4 shadow-2xl md:p-5"
               >
+                <input
+                  type="text"
+                  name="_honey"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute h-0 w-0 overflow-hidden opacity-0 pointer-events-none"
+                />
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="font-mono text-[9px] uppercase tracking-widest text-purple-300">
@@ -1432,15 +1491,36 @@ export default function App() {
 
                 <button
                   type="submit"
-                  className="group relative mt-3 flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-fuchsia-500 via-purple-500 to-cyan-400 px-4 py-2.5 text-[11px] font-extrabold uppercase tracking-widest text-slate-950 shadow-[0_0_28px_rgba(34,211,238,0.14)] transition hover:-translate-y-0.5 hover:shadow-[0_0_35px_rgba(168,85,247,0.22)]"
+                  disabled={contactStatus.state === 'sending'}
+                  className="group relative mt-3 flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-fuchsia-500 via-purple-500 to-cyan-400 px-4 py-2.5 text-[11px] font-extrabold uppercase tracking-widest text-slate-950 shadow-[0_0_28px_rgba(34,211,238,0.14)] transition hover:-translate-y-0.5 hover:shadow-[0_0_35px_rgba(168,85,247,0.22)] disabled:cursor-wait disabled:opacity-70 disabled:hover:translate-y-0"
                 >
                   <span className="absolute inset-0 translate-x-[-110%] bg-gradient-to-r from-transparent via-white/35 to-transparent transition-transform duration-700 group-hover:translate-x-[110%]" />
-                  <Send className="relative h-4 w-4" />
-                  <span className="relative">Send Message</span>
+                  <Send
+                    className={`relative h-4 w-4 ${
+                      contactStatus.state === 'sending' ? 'animate-pulse' : ''
+                    }`}
+                  />
+                  <span className="relative">
+                    {contactStatus.state === 'sending'
+                      ? 'Sending...'
+                      : contactStatus.state === 'success'
+                        ? 'Message Sent'
+                        : 'Send Message'}
+                  </span>
                 </button>
 
-                <p className="mt-2 text-center font-mono text-[8px] leading-relaxed text-slate-500">
-                  This opens your default email application with the message prepared.
+                <p
+                  aria-live="polite"
+                  className={`mt-2 text-center font-mono text-[8px] leading-relaxed ${
+                    contactStatus.state === 'success'
+                      ? 'text-emerald-300'
+                      : contactStatus.state === 'error'
+                        ? 'text-rose-300'
+                        : 'text-slate-500'
+                  }`}
+                >
+                  {contactStatus.message ||
+                    'Your message is sent directly to Akshita without opening an email application.'}
                 </p>
               </form>
 
