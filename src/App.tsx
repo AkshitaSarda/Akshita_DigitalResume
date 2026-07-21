@@ -1348,22 +1348,22 @@ export default function App() {
               </div>
             </article>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex w-full max-w-[470px] flex-col gap-2.5 lg:justify-self-end">
               <form
                 onSubmit={handleContactSubmit}
-                className="glass-panel rounded-[28px] border-white/10 bg-white/[0.035] p-5 shadow-2xl md:p-6"
+                className="glass-panel rounded-[24px] border-white/10 bg-white/[0.035] p-4 shadow-2xl md:p-5"
               >
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="font-mono text-[9px] uppercase tracking-widest text-purple-300">
                       Transmission Packet
                     </span>
-                    <h3 className="mt-1 text-lg font-bold text-white">Send a message</h3>
+                    <h3 className="mt-1 text-base font-bold text-white">Send a message</h3>
                   </div>
-                  <Send className="h-5 w-5 text-cyan-300" />
+                  <Send className="h-4 w-4 text-cyan-300" />
                 </div>
 
-                <div className="mt-5 space-y-3">
+                <div className="mt-4 space-y-2.5">
                   <label className="block">
                     <span className="sr-only">Your name</span>
                     <input
@@ -1372,7 +1372,7 @@ export default function App() {
                       required
                       autoComplete="name"
                       placeholder="Your name"
-                      className="w-full rounded-xl border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-400/40 focus:ring-2 focus:ring-cyan-400/10"
+                      className="w-full rounded-xl border border-white/10 bg-slate-950/55 px-3.5 py-2.5 text-xs text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-400/40 focus:ring-2 focus:ring-cyan-400/10"
                     />
                   </label>
 
@@ -1384,7 +1384,7 @@ export default function App() {
                       required
                       autoComplete="email"
                       placeholder="Your email address"
-                      className="w-full rounded-xl border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-400/40 focus:ring-2 focus:ring-cyan-400/10"
+                      className="w-full rounded-xl border border-white/10 bg-slate-950/55 px-3.5 py-2.5 text-xs text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-400/40 focus:ring-2 focus:ring-cyan-400/10"
                     />
                   </label>
 
@@ -1393,33 +1393,33 @@ export default function App() {
                     <textarea
                       name="message"
                       required
-                      rows={5}
+                      rows={4}
                       placeholder="Describe your inquiry or opportunity..."
-                      className="w-full resize-none rounded-xl border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-purple-400/40 focus:ring-2 focus:ring-purple-400/10"
+                      className="w-full resize-none rounded-xl border border-white/10 bg-slate-950/55 px-3.5 py-2.5 text-xs text-white outline-none transition placeholder:text-slate-600 focus:border-purple-400/40 focus:ring-2 focus:ring-purple-400/10"
                     />
                   </label>
                 </div>
 
                 <button
                   type="submit"
-                  className="group relative mt-4 flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-fuchsia-500 via-purple-500 to-cyan-400 px-5 py-3 text-xs font-extrabold uppercase tracking-widest text-slate-950 shadow-[0_0_28px_rgba(34,211,238,0.14)] transition hover:-translate-y-0.5 hover:shadow-[0_0_35px_rgba(168,85,247,0.22)]"
+                  className="group relative mt-3 flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-fuchsia-500 via-purple-500 to-cyan-400 px-4 py-2.5 text-[11px] font-extrabold uppercase tracking-widest text-slate-950 shadow-[0_0_28px_rgba(34,211,238,0.14)] transition hover:-translate-y-0.5 hover:shadow-[0_0_35px_rgba(168,85,247,0.22)]"
                 >
                   <span className="absolute inset-0 translate-x-[-110%] bg-gradient-to-r from-transparent via-white/35 to-transparent transition-transform duration-700 group-hover:translate-x-[110%]" />
                   <Send className="relative h-4 w-4" />
                   <span className="relative">Send Message</span>
                 </button>
 
-                <p className="mt-3 text-center font-mono text-[9px] leading-relaxed text-slate-500">
+                <p className="mt-2 text-center font-mono text-[8px] leading-relaxed text-slate-500">
                   This opens your default email application with the message prepared.
                 </p>
               </form>
 
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid gap-2 sm:grid-cols-2">
                 <a
                   href="https://github.com/AkshitaSarda"
                   target="_blank"
                   rel="noreferrer"
-                  className="glass-panel glass-panel-hover flex items-center justify-center gap-2 rounded-2xl border-white/10 p-4 text-xs font-semibold text-slate-300 hover:text-cyan-300"
+                  className="glass-panel glass-panel-hover flex items-center justify-center gap-2 rounded-xl border-white/10 px-3 py-2.5 text-[11px] font-semibold text-slate-300 hover:text-cyan-300"
                 >
                   <Github className="h-4 w-4" />
                   GitHub
@@ -1427,7 +1427,7 @@ export default function App() {
 
                 <a
                   href="tel:+919413586475"
-                  className="glass-panel glass-panel-hover flex items-center justify-center gap-2 rounded-2xl border-white/10 p-4 text-xs font-semibold text-slate-300 hover:text-purple-300"
+                  className="glass-panel glass-panel-hover flex items-center justify-center gap-2 rounded-xl border-white/10 px-3 py-2.5 text-[11px] font-semibold text-slate-300 hover:text-purple-300"
                 >
                   <Phone className="h-4 w-4" />
                   +91 94135 86475
@@ -1435,13 +1435,13 @@ export default function App() {
 
                 <a
                   href="mailto:akshita2k2@gmail.com"
-                  className="glass-panel glass-panel-hover flex items-center justify-center gap-2 rounded-2xl border-white/10 p-4 text-xs font-semibold text-slate-300 hover:text-cyan-300 sm:col-span-2"
+                  className="glass-panel glass-panel-hover flex items-center justify-center gap-2 rounded-xl border-white/10 px-3 py-2.5 text-[11px] font-semibold text-slate-300 hover:text-cyan-300 sm:col-span-2"
                 >
                   <Mail className="h-4 w-4" />
                   akshita2k2@gmail.com
                 </a>
 
-                <div className="glass-panel flex items-center justify-center gap-2 rounded-2xl border-white/10 p-4 text-xs font-semibold text-slate-400 sm:col-span-2">
+                <div className="glass-panel flex items-center justify-center gap-2 rounded-xl border-white/10 px-3 py-2.5 text-[11px] font-semibold text-slate-400 sm:col-span-2">
                   <MapPin className="h-4 w-4 text-purple-300" />
                   SBI, Belapur · Navi Mumbai
                 </div>
