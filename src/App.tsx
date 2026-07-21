@@ -1264,13 +1264,13 @@ export default function App() {
             </p>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-[1.12fr_0.88fr] lg:items-stretch">
+          <div className="grid gap-6 lg:grid-cols-[1.12fr_0.88fr] lg:items-start">
             <article
-              className="glass-panel relative flex min-h-[430px] cursor-text flex-col overflow-hidden rounded-[28px] border-white/10 bg-white/[0.03] p-5 shadow-2xl md:p-6"
+              className="glass-panel relative flex h-[390px] cursor-text flex-col overflow-hidden rounded-[28px] border-white/10 bg-white/[0.03] p-4 shadow-2xl sm:h-[410px] md:p-5 lg:h-[430px]"
               onClick={() => terminalInputRef.current?.focus()}
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.08),transparent_34%),radial-gradient(circle_at_80%_80%,rgba(168,85,247,0.08),transparent_38%)]" />
-              <div className="relative z-10 flex items-center justify-between border-b border-white/5 pb-4">
+              <div className="relative z-10 flex items-center justify-between border-b border-white/5 pb-3">
                 <div className="flex items-center gap-2" aria-hidden="true">
                   <span className="h-2.5 w-2.5 rounded-full bg-rose-500/90" />
                   <span className="h-2.5 w-2.5 rounded-full bg-amber-400/90" />
@@ -1283,7 +1283,7 @@ export default function App() {
               </div>
 
               <div
-                className="terminal-scrollbar relative z-10 mt-5 min-h-0 flex-1 overflow-y-auto pr-2 font-mono text-[11px] leading-6 sm:text-xs"
+                className="terminal-scrollbar relative z-10 mt-4 min-h-0 flex-1 overflow-y-auto pr-2 font-mono text-[11px] leading-5 sm:text-xs"
                 aria-live="polite"
               >
                 {terminalEntries.map((entry) => (
@@ -1311,7 +1311,7 @@ export default function App() {
                 <div ref={terminalEndRef} />
               </div>
 
-              <div className="relative z-10 mt-4 border-t border-white/5 pt-4">
+              <div className="relative z-10 mt-3 border-t border-white/5 pt-3">
                 <div className="flex items-center gap-2 font-mono text-[11px] sm:text-xs">
                   <label htmlFor="portfolio-terminal-input" className="shrink-0 text-cyan-300">
                     akshita@portfolio:~$
