@@ -715,7 +715,7 @@ export default function App() {
 
             <div
               className="absolute bottom-[23px] z-10 transition-all duration-1000 ease-out"
-              style={{ left: `calc(${milestoneProgress}% - 50px)` }}
+              style={{ left: `calc(${milestoneProgress}% - ${milestoneProgress * 0.96}px)` }}
             >
               <div className="relative flex h-10 w-24 flex-col items-center justify-center">
                 <div className="absolute bottom-0 h-2 w-16 animate-pulse rounded-full bg-blue-500/40 blur-xs" />
@@ -726,7 +726,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="absolute bottom-1 left-0 right-0 flex justify-between px-2 pointer-events-none md:px-8">
+            <div className="absolute bottom-1 left-0 right-0 flex justify-between px-8 pointer-events-none">
               {milestones.map((milestone, index) => (
                 <button
                   id={`milestone-node-${index}`}
