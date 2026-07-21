@@ -705,10 +705,10 @@ export default function App() {
           </div>
 
           <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center justify-center text-center">
-            <div className="relative grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(72px,0.34fr)] items-center gap-3 overflow-visible px-2 sm:gap-5 md:grid-cols-[minmax(0,1fr)_auto_minmax(112px,0.42fr)] md:px-5">
+            <div className="relative grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3 overflow-visible px-2 sm:gap-5 md:px-5">
               <div aria-hidden="true" />
 
-              <div className="relative overflow-visible">
+              <div className="relative justify-self-center overflow-visible">
                 <div className="pointer-events-none absolute left-[24%] top-[56%] hidden h-6 w-32 -skew-x-12 bg-[#030307] shadow-[0_0_26px_rgba(34,211,238,0.18)] md:block" />
                 <div className="pointer-events-none absolute right-[19%] top-[56%] hidden h-6 w-28 skew-x-12 bg-[#030307] shadow-[0_0_26px_rgba(168,85,247,0.16)] md:block" />
 
