@@ -4,11 +4,18 @@ import {
   ArrowDown,
   Award,
   Briefcase,
+  Clock3,
+  Database,
   Download,
   GraduationCap,
   Languages,
-  Layers,
+  Search,
+  Server,
+  Settings2,
+  ShieldCheck,
   Sparkles,
+  Terminal,
+  Workflow,
   // MessageSquare, // Chatbot disabled temporarily
   // Send, // Chatbot disabled temporarily
 } from 'lucide-react';
@@ -23,13 +30,6 @@ interface Milestone {
   tags: string[];
 }
 
-interface Project {
-  title: string;
-  description: string;
-  category: string;
-  metrics: string;
-  vibe: string;
-}
 
 /* CHATBOT DISABLED TEMPORARILY
 interface ChatMessage {
@@ -59,7 +59,6 @@ export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseRef = useRef({ x: 0, y: 0, radius: 150 });
-  const [tilts, setTilts] = useState<Record<number, { x: number; y: number }>>({});
 
   const milestones: Milestone[] = [
     {
@@ -117,32 +116,7 @@ export default function App() {
     },
   ];
 
-  const projects: Project[] = [
-    {
-      title: 'Core Banking Production Support',
-      description:
-        'Supports the TCS BaNCS Core Banking Application for SBI, helping maintain uninterrupted services across critical banking applications and business processes.',
-      category: 'Banking Operations',
-      metrics: 'TCS BaNCS / SBI',
-      vibe: 'Production Reliability',
-    },
-    {
-      title: 'Incident, Change & SLA Management',
-      description:
-        'Investigates application issues, performs root-cause analysis, manages incident tickets, and coordinates with development, infrastructure, and business stakeholders.',
-      category: 'IT Service Management',
-      metrics: 'SLA-Focused Resolution',
-      vibe: 'Operational Control',
-    },
-    {
-      title: 'EOD, Batch & DR Operations',
-      description:
-        'Monitors EOD, SOD, and batch processing; validates releases and banking data; and participates in DR drills and fail-over switch activities.',
-      category: 'Business Continuity',
-      metrics: 'EOD / SOD / DR',
-      vibe: 'Service Continuity',
-    },
-  ];
+
 
   /* CHATBOT DISABLED TEMPORARILY
   const presetSuggestions = [
@@ -273,26 +247,7 @@ export default function App() {
     };
   }, []);
 
-  const handleMouseMoveTilt = (index: number, event: React.MouseEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
 
-    setTilts((previous) => ({
-      ...previous,
-      [index]: {
-        x: (y / rect.height - 0.5) * -12,
-        y: (x / rect.width - 0.5) * 12,
-      },
-    }));
-  };
-
-  const handleMouseLeaveTilt = (index: number) => {
-    setTilts((previous) => ({
-      ...previous,
-      [index]: { x: 0, y: 0 },
-    }));
-  };
 
   /* CHATBOT DISABLED TEMPORARILY
   const handleSendMessage = async (customText?: string) => {
@@ -400,15 +355,26 @@ export default function App() {
             <span className="text-sm font-semibold tracking-[0.25em] text-white">AKSHITA</span>
           </div>
 
-          <a
-            href="/Akshita_Sarda_Resume.pdf"
-            download="Akshita_Sarda_Resume.pdf"
-            aria-label="Download Akshita Sarda resume"
-            className="mr-2 flex items-center gap-1.5 rounded-full border border-blue-500/20 bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-blue-300 transition hover:border-blue-400/40 hover:bg-blue-500/15 hover:text-blue-200"
-          >
-            <Download className="h-3.5 w-3.5" />
-            Download Resume
-          </a>
+          <nav aria-label="Primary navigation" className="mr-2 flex items-center gap-2">
+            <a
+              href="#experience-section"
+              className="flex items-center gap-1.5 rounded-full border border-purple-500/25 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-purple-200 transition hover:border-purple-400/50 hover:bg-purple-500/15 hover:text-white sm:text-xs"
+            >
+              <Briefcase className="h-3.5 w-3.5" />
+              Experience
+            </a>
+
+            <a
+              href="/Akshita_Sarda_Resume.pdf"
+              download="Akshita_Sarda_Resume.pdf"
+              aria-label="Download Akshita Sarda resume"
+              className="flex items-center gap-1.5 rounded-full border border-blue-500/20 bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-3 py-1.5 text-[10px] font-medium uppercase tracking-wider text-blue-300 transition hover:border-blue-400/40 hover:bg-blue-500/15 hover:text-blue-200 sm:text-xs"
+            >
+              <Download className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Download Resume</span>
+              <span className="sm:hidden">Resume</span>
+            </a>
+          </nav>
 
           {/* CHATBOT DISABLED TEMPORARILY
           <button
@@ -621,56 +587,177 @@ export default function App() {
           </div>
         </section>
 
-        <section id="projects-section" className="space-y-8">
-          <div>
-            <div className="flex items-center gap-2">
-              <Layers className="h-4 w-4 text-blue-400" />
-              <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
-                Professional Capability Areas
-              </span>
+        <section id="experience-section" className="scroll-mt-28 space-y-8">
+          <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+            <div>
+              <div className="flex items-center gap-2">
+                <Briefcase className="h-4 w-4 text-fuchsia-400" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-fuchsia-300">
+                  02 / Operational Capabilities
+                </span>
+              </div>
+              <h2 className="mt-2 text-3xl font-black uppercase tracking-tight text-white md:text-4xl">
+                Technical <span className="bg-gradient-to-r from-cyan-300 to-purple-500 bg-clip-text text-transparent">Operations</span>
+              </h2>
             </div>
-            <h2 className="mt-1 text-2xl font-light md:text-3xl">Core Banking Support Expertise</h2>
-            <p className="mt-1 font-mono text-xs text-neutral-500">
-              [Hover over the cards to explore key responsibilities]
+
+            <p className="max-w-lg font-mono text-xs leading-relaxed text-slate-400 lg:justify-self-end">
+              Production-focused experience supporting SBI Core Banking systems, critical batch cycles, incident
+              resolution, data validation, and service-continuity activities.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {projects.map((project, index) => {
-              const tilt = tilts[index] || { x: 0, y: 0 };
+          <div className="grid gap-5 lg:grid-cols-[1.05fr_1fr]">
+            <div className="glass-panel relative min-h-[390px] overflow-hidden rounded-[30px] border-white/10 bg-white/[0.035] p-5 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-white/5 pb-3 font-mono text-[9px] uppercase tracking-widest text-slate-500">
+                <span>Core Banking Operations Map</span>
+                <span className="text-cyan-300">SBI / TCS BaNCS</span>
+              </div>
 
-              return (
-                <div
-                  key={project.title}
-                  onMouseMove={(event) => handleMouseMoveTilt(index, event)}
-                  onMouseLeave={() => handleMouseLeaveTilt(index)}
-                  style={{
-                    transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-                    transition: 'transform 0.15s ease-out',
-                  }}
-                  className="glass-panel glass-panel-hover flex h-72 flex-col justify-between rounded-[36px] border-white/10 p-8 transform-gpu"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="rounded-full bg-blue-500/10 px-2 py-0.5 font-mono text-[10px] text-blue-400">
-                      {project.category}
-                    </span>
-                    <span className="font-mono text-[10px] text-neutral-500">
-                      FOCUS: {project.vibe.toUpperCase()}
-                    </span>
-                  </div>
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-[linear-gradient(rgba(34,211,238,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.07)_1px,transparent_1px)] bg-[size:28px_28px] [mask-image:linear-gradient(to_top,black,transparent)]" />
+              <div className="pointer-events-none absolute left-1/2 top-[56%] h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/10 bg-cyan-400/[0.03] blur-sm" />
 
-                  <div className="space-y-2 py-4">
-                    <h3 className="text-base font-bold text-white">{project.title}</h3>
-                    <p className="line-clamp-3 text-xs leading-relaxed text-neutral-400">{project.description}</p>
-                  </div>
-
-                  <div className="flex items-center justify-between border-t border-neutral-800 pt-3">
-                    <span className="text-[9px] uppercase tracking-widest text-neutral-500">Scope</span>
-                    <span className="font-mono text-xs font-bold text-purple-400">{project.metrics}</span>
+              <div className="relative flex min-h-[315px] items-end justify-between gap-5 pt-8">
+                <div className="relative flex h-48 w-[30%] flex-col justify-end rounded-t-xl border border-cyan-400/15 bg-slate-950/80 p-4 shadow-[0_0_35px_rgba(34,211,238,0.08)]">
+                  <Server className="mb-auto h-5 w-5 text-cyan-300" />
+                  <span className="mb-3 font-mono text-[9px] uppercase tracking-widest text-slate-500">Production</span>
+                  <div className="grid grid-cols-3 gap-3">
+                    {[0, 1, 2, 3, 4, 5].map((light) => (
+                      <span
+                        key={`production-light-${light}`}
+                        className={`h-1.5 w-1.5 rounded-full ${light % 3 === 0 ? 'bg-fuchsia-400' : 'bg-cyan-300'} shadow-[0_0_10px_currentColor]`}
+                      />
+                    ))}
                   </div>
                 </div>
-              );
-            })}
+
+                <div className="relative mb-7 flex w-[34%] flex-col items-center gap-3">
+                  <div className="absolute left-1/2 top-1/2 h-px w-[220%] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-cyan-400/10 via-cyan-300/70 to-purple-400/10" />
+                  {[0, 1, 2].map((disk) => (
+                    <div
+                      key={`database-disk-${disk}`}
+                      className="relative z-10 h-11 w-full rounded-[50%] border border-cyan-300/45 bg-slate-950/90 shadow-[0_0_25px_rgba(34,211,238,0.12)]"
+                    >
+                      <div className="absolute inset-x-2 top-2 h-px bg-gradient-to-r from-transparent via-cyan-300/70 to-transparent" />
+                      <div className="absolute inset-x-4 bottom-2 h-px bg-gradient-to-r from-transparent via-purple-400/50 to-transparent" />
+                    </div>
+                  ))}
+                  <Database className="relative z-10 mt-1 h-5 w-5 text-purple-300" />
+                  <span className="relative z-10 font-mono text-[8px] uppercase tracking-[0.2em] text-slate-400">
+                    Data Validation
+                  </span>
+                </div>
+
+                <div className="relative flex h-48 w-[30%] flex-col justify-end rounded-t-xl border border-purple-400/15 bg-slate-950/80 p-4 shadow-[0_0_35px_rgba(168,85,247,0.08)]">
+                  <ShieldCheck className="mb-auto h-5 w-5 text-purple-300" />
+                  <span className="mb-3 font-mono text-[9px] uppercase tracking-widest text-slate-500">Continuity</span>
+                  <div className="grid grid-cols-3 gap-3">
+                    {[0, 1, 2, 3, 4, 5].map((light) => (
+                      <span
+                        key={`continuity-light-${light}`}
+                        className={`h-1.5 w-1.5 rounded-full ${light % 2 === 0 ? 'bg-emerald-300' : 'bg-purple-400'} shadow-[0_0_10px_currentColor]`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <article className="glass-panel rounded-[24px] border-cyan-400/15 bg-cyan-400/[0.035] p-5 sm:col-span-2">
+                <div className="flex items-center gap-2 text-cyan-300">
+                  <Settings2 className="h-5 w-5" />
+                  <h3 className="text-base font-bold text-white">SBI Core Banking Application Support</h3>
+                </div>
+                <p className="mt-3 text-xs leading-relaxed text-slate-400">
+                  Supporting the TCS BaNCS Core Banking Application for SBI through production monitoring, issue
+                  investigation, batch coordination, deployment validation, and collaboration with technical and
+                  business teams.
+                </p>
+              </article>
+
+              <article className="glass-panel rounded-[22px] border-white/10 p-4">
+                <span className="font-mono text-[8px] uppercase tracking-widest text-cyan-300">Critical Banking Apps</span>
+                <div className="mt-2 flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4 text-cyan-300" />
+                  <h3 className="text-sm font-bold text-white">Production Support</h3>
+                </div>
+                <p className="mt-2 text-[11px] leading-relaxed text-slate-400">
+                  Monitoring business-critical services and coordinating timely recovery within defined SLAs.
+                </p>
+              </article>
+
+              <article className="glass-panel rounded-[22px] border-white/10 p-4">
+                <span className="font-mono text-[8px] uppercase tracking-widest text-purple-300">IT Service Management</span>
+                <div className="mt-2 flex items-center gap-2">
+                  <Workflow className="h-4 w-4 text-purple-300" />
+                  <h3 className="text-sm font-bold text-white">Incident Management</h3>
+                </div>
+                <p className="mt-2 text-[11px] leading-relaxed text-slate-400">
+                  Investigating alerts, managing tickets, tracking issues, and coordinating cross-team resolution.
+                </p>
+              </article>
+
+              <article className="glass-panel rounded-[22px] border-white/10 p-4">
+                <span className="font-mono text-[8px] uppercase tracking-widest text-cyan-300">Data Validation</span>
+                <div className="mt-2 flex items-center gap-2">
+                  <Database className="h-4 w-4 text-cyan-300" />
+                  <h3 className="text-sm font-bold text-white">SQL Querying</h3>
+                </div>
+                <p className="mt-2 text-[11px] leading-relaxed text-slate-400">
+                  Creating SQL queries for troubleshooting, verification, reconciliation, and banking-data checks.
+                </p>
+              </article>
+
+              <article className="glass-panel rounded-[22px] border-white/10 p-4">
+                <span className="font-mono text-[8px] uppercase tracking-widest text-purple-300">Operating Systems</span>
+                <div className="mt-2 flex items-center gap-2">
+                  <Terminal className="h-4 w-4 text-purple-300" />
+                  <h3 className="text-sm font-bold text-white">Unix & Linux Systems</h3>
+                </div>
+                <p className="mt-2 text-[11px] leading-relaxed text-slate-400">
+                  Working with Unix/Linux environments, logs, commands, scripts, and operational troubleshooting.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                icon: Terminal,
+                label: 'Automation',
+                title: 'Shell Scripting',
+                description: 'Using shell scripts and command-line tools to support repeatable operational tasks.',
+              },
+              {
+                icon: Workflow,
+                label: 'Batch Control',
+                title: 'Autosys Orchestration',
+                description: 'Monitoring scheduled workloads, dependencies, failures, and production batch flow.',
+              },
+              {
+                icon: Clock3,
+                label: 'Banking Cycle',
+                title: 'EOD / SOD Monitoring',
+                description: 'Tracking End-of-Day, Start-of-Day, and overnight processing through completion.',
+              },
+              {
+                icon: Search,
+                label: 'Problem Solving',
+                title: 'Root Cause Analysis',
+                description: 'Tracing application issues, isolating causes, and coordinating permanent resolution.',
+              },
+            ].map(({ icon: Icon, label, title, description }) => (
+              <article key={title} className="glass-panel rounded-[22px] border-white/10 p-4 transition hover:-translate-y-1 hover:border-cyan-400/20">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[8px] uppercase tracking-widest text-slate-500">{label}</span>
+                  <Icon className="h-4 w-4 text-cyan-300" />
+                </div>
+                <h3 className="mt-3 text-sm font-bold text-white">{title}</h3>
+                <p className="mt-2 text-[11px] leading-relaxed text-slate-400">{description}</p>
+              </article>
+            ))}
           </div>
         </section>
 
