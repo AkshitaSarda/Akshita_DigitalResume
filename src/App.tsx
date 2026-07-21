@@ -908,37 +908,38 @@ export default function App() {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-stretch">
-            <div className="glass-panel relative min-h-[470px] overflow-hidden rounded-[30px] border-white/10 bg-white/[0.035] p-5 shadow-2xl">
-              <div className="flex items-center justify-between border-b border-white/5 pb-3 font-mono text-[9px] uppercase tracking-widest text-slate-500">
+            <div className="glass-panel relative flex min-h-[520px] flex-col overflow-hidden rounded-[30px] border-white/10 bg-white/[0.035] p-5 shadow-2xl">
+              <div className="relative z-20 flex items-center justify-between border-b border-white/5 pb-3 font-mono text-[9px] uppercase tracking-widest text-slate-500">
                 <span>Professional Identity</span>
                 <span className="text-cyan-300">TCS · SBI</span>
               </div>
 
-              <div className="pointer-events-none absolute inset-0">
-                <div className="absolute left-1/2 top-[47%] h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/15" />
-                <div className="absolute left-1/2 top-[47%] h-[285px] w-[285px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-400/15" />
-                <div className="absolute left-1/2 top-[47%] h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-cyan-500/[0.06] via-transparent to-purple-500/[0.08] blur-2xl" />
-                <div className="absolute inset-x-0 bottom-0 h-36 bg-[linear-gradient(rgba(34,211,238,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.06)_1px,transparent_1px)] bg-[size:26px_26px] [mask-image:linear-gradient(to_top,black,transparent)]" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-[linear-gradient(rgba(34,211,238,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.06)_1px,transparent_1px)] bg-[size:26px_26px] [mask-image:linear-gradient(to_top,black,transparent)]" />
+
+              <div className="relative flex flex-1 items-center justify-center py-6">
+                <div className="relative flex h-[405px] w-full max-w-[405px] items-center justify-center">
+                  <div className="pointer-events-none absolute left-1/2 top-1/2 h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-cyan-500/[0.06] via-transparent to-purple-500/[0.08] blur-2xl" />
+                  <div className="pointer-events-none absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-400/15" />
+                  <div className="pointer-events-none absolute left-1/2 top-1/2 h-[285px] w-[285px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-purple-400/15" />
+
+                  <div className="relative z-10 h-[300px] w-[230px] overflow-hidden rounded-[30px] border border-cyan-300/25 bg-slate-950/80 p-1.5 shadow-[0_0_45px_rgba(34,211,238,0.14)] sm:h-[330px] sm:w-[250px]">
+                    <img
+                      src="/Akshita_Profile.webp"
+                      alt="Akshita Sarda"
+                      className="h-full w-full rounded-[25px] object-cover object-center"
+                    />
+                    <div className="pointer-events-none absolute inset-1.5 rounded-[25px] bg-gradient-to-t from-[#030307]/55 via-transparent to-cyan-300/[0.03]" />
+                  </div>
+                </div>
               </div>
 
-              <div className="relative flex min-h-[390px] w-full flex-1 flex-col items-center justify-center py-8">
-                <div className="relative mx-auto h-[300px] w-[230px] self-center overflow-hidden rounded-[30px] border border-cyan-300/25 bg-slate-950/80 p-1.5 shadow-[0_0_45px_rgba(34,211,238,0.14)] sm:h-[330px] sm:w-[250px]">
-                  <img
-                    src="/Akshita_Profile.webp"
-                    alt="Akshita Sarda"
-                    className="h-full w-full rounded-[25px] object-cover object-center"
-                  />
-                  <div className="pointer-events-none absolute inset-1.5 rounded-[25px] bg-gradient-to-t from-[#030307]/55 via-transparent to-cyan-300/[0.03]" />
-                </div>
-
-                <div className="mt-5 text-center">
-                  <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-cyan-300">
-                    Akshita Sarda
-                  </p>
-                  <p className="mt-1 font-mono text-[8px] uppercase tracking-[0.18em] text-slate-500">
-                    System Engineer · Core Banking Support
-                  </p>
-                </div>
+              <div className="relative z-20 -mt-2 pb-1 text-center">
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-cyan-300">
+                  Akshita Sarda
+                </p>
+                <p className="mt-1 font-mono text-[8px] uppercase tracking-[0.18em] text-slate-500">
+                  System Engineer · Core Banking Support
+                </p>
               </div>
             </div>
 
