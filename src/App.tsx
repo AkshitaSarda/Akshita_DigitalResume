@@ -35,6 +35,13 @@ interface Milestone {
   tags: string[];
 }
 
+interface TerminalEntry {
+  id: number;
+  command?: string;
+  lines: string[];
+  tone?: 'default' | 'success' | 'error';
+}
+
 
 /* CHATBOT DISABLED TEMPORARILY
 interface ChatMessage {
@@ -46,6 +53,19 @@ interface ChatMessage {
 
 export default function App() {
   const [currentMilestoneIdx, setCurrentMilestoneIdx] = useState<number>(0);
+  const [terminalEntries, setTerminalEntries] = useState<TerminalEntry[]>([
+    {
+      id: 0,
+      lines: [
+        "Welcome to Akshita's interactive portfolio terminal.",
+        'Type "help" to view available commands.',
+      ],
+      tone: 'success',
+    },
+  ]);
+  const [terminalCommand, setTerminalCommand] = useState<string>('');
+  const [terminalCommandHistory, setTerminalCommandHistory] = useState<string[]>([]);
+  const [terminalHistoryIndex, setTerminalHistoryIndex] = useState<number>(-1);
 
   /* CHATBOT DISABLED TEMPORARILY
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
@@ -64,6 +84,9 @@ export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseRef = useRef({ x: 0, y: 0, radius: 150 });
+  const terminalInputRef = useRef<HTMLInputElement>(null);
+  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const terminalEntryIdRef = useRef<number>(1);
 
   const milestones: Milestone[] = [
     {
@@ -305,6 +328,185 @@ export default function App() {
     }
   };
   */
+
+  useEffect(() => {
+    terminalEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, [terminalEntries]);
+
+  const terminalCommands = [
+    'help',
+    'whoami',
+    'focus',
+    'skills',
+    'experience',
+    'awards',
+    'about',
+    'contact',
+    'resume',
+    'github',
+    'email',
+    'date',
+    'clear',
+  ];
+
+  const addTerminalEntry = (
+    command: string,
+    lines: string[],
+    tone: TerminalEntry['tone'] = 'default',
+  ) => {
+    setTerminalEntries((previous) => [
+      ...previous,
+      {
+        id: terminalEntryIdRef.current++,
+        command,
+        lines,
+        tone,
+      },
+    ]);
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const handleTerminalCommand = (rawCommand: string) => {
+    const enteredCommand = rawCommand.trim();
+    if (!enteredCommand) return;
+
+    const command = enteredCommand.toLowerCase();
+    setTerminalCommandHistory((previous) => [...previous, enteredCommand]);
+    setTerminalHistoryIndex(-1);
+    setTerminalCommand('');
+
+    if (command === 'clear') {
+      setTerminalEntries([]);
+      return;
+    }
+
+    switch (command) {
+      case 'help':
+        addTerminalEntry(enteredCommand, [
+          'AVAILABLE COMMANDS',
+          'whoami     Display professional identity',
+          'focus      Show current role and domain',
+          'skills     List core technical skills',
+          'experience Open Technical Operations',
+          'awards     Open Awards & Recognition',
+          'about      Open the About section',
+          'contact    Show verified contact details',
+          'resume     Download the resume PDF',
+          'github     Open GitHub profile',
+          'email      Compose an email',
+          'date       Display local date and time',
+          'clear      Clear the terminal screen',
+        ], 'success');
+        break;
+      case 'whoami':
+        addTerminalEntry(enteredCommand, [
+          'Akshita Sarda',
+          'System Engineer · Application Support Executive',
+          'Tata Consultancy Services · SBI Core Banking, Belapur',
+        ]);
+        break;
+      case 'focus':
+        addTerminalEntry(enteredCommand, [
+          'TCS BaNCS Core Banking production support for SBI.',
+          'EOD/SOD monitoring · incident resolution · batch operations · data validation',
+        ]);
+        break;
+      case 'skills':
+        addTerminalEntry(enteredCommand, [
+          'Unix · Linux · SQL · Autosys · Shell Scripting',
+          'Production Support · Incident Management · Root Cause Analysis · DR Support',
+        ]);
+        break;
+      case 'experience':
+        addTerminalEntry(enteredCommand, ['Opening Technical Operations section...'], 'success');
+        window.setTimeout(() => scrollToSection('experience-section'), 180);
+        break;
+      case 'awards':
+        addTerminalEntry(enteredCommand, ['Opening Awards & Recognition section...'], 'success');
+        window.setTimeout(() => scrollToSection('awards-section'), 180);
+        break;
+      case 'about':
+        addTerminalEntry(enteredCommand, ['Opening professional profile...'], 'success');
+        window.setTimeout(() => scrollToSection('about-section'), 180);
+        break;
+      case 'contact':
+        addTerminalEntry(enteredCommand, [
+          'Email: akshita2k2@gmail.com',
+          'Phone: +91 94135 86475',
+          'Location: SBI, Belapur · Navi Mumbai',
+        ]);
+        break;
+      case 'resume': {
+        addTerminalEntry(enteredCommand, ['Preparing Akshita_Sarda_Resume.pdf...'], 'success');
+        const downloadLink = document.createElement('a');
+        downloadLink.href = '/Akshita_Sarda_Resume.pdf';
+        downloadLink.download = 'Akshita_Sarda_Resume.pdf';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove();
+        break;
+      }
+      case 'github':
+        addTerminalEntry(enteredCommand, ['Opening github.com/AkshitaSarda...'], 'success');
+        window.open('https://github.com/AkshitaSarda', '_blank', 'noopener,noreferrer');
+        break;
+      case 'email':
+        addTerminalEntry(enteredCommand, ['Opening your default email application...'], 'success');
+        window.location.href = 'mailto:akshita2k2@gmail.com?subject=Portfolio%20enquiry';
+        break;
+      case 'date':
+        addTerminalEntry(enteredCommand, [new Date().toLocaleString()]);
+        break;
+      default:
+        addTerminalEntry(
+          enteredCommand,
+          [`Command not found: ${enteredCommand}`, 'Type "help" to view available commands.'],
+          'error',
+        );
+    }
+  };
+
+  const handleTerminalKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleTerminalCommand(terminalCommand);
+      return;
+    }
+
+    if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      if (!terminalCommandHistory.length) return;
+      const nextIndex =
+        terminalHistoryIndex < terminalCommandHistory.length - 1
+          ? terminalHistoryIndex + 1
+          : terminalHistoryIndex;
+      setTerminalHistoryIndex(nextIndex);
+      setTerminalCommand(terminalCommandHistory[terminalCommandHistory.length - 1 - nextIndex] || '');
+      return;
+    }
+
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      if (terminalHistoryIndex <= 0) {
+        setTerminalHistoryIndex(-1);
+        setTerminalCommand('');
+        return;
+      }
+      const nextIndex = terminalHistoryIndex - 1;
+      setTerminalHistoryIndex(nextIndex);
+      setTerminalCommand(terminalCommandHistory[terminalCommandHistory.length - 1 - nextIndex] || '');
+      return;
+    }
+
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      const match = terminalCommands.find((item) => item.startsWith(terminalCommand.toLowerCase()));
+      if (match) setTerminalCommand(match);
+    }
+  };
 
   const activeMilestone = milestones[currentMilestoneIdx];
   const milestoneProgress = (currentMilestoneIdx / (milestones.length - 1)) * 100;
@@ -1063,7 +1265,10 @@ export default function App() {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-[1.12fr_0.88fr] lg:items-stretch">
-            <article className="glass-panel relative flex min-h-[430px] flex-col overflow-hidden rounded-[28px] border-white/10 bg-white/[0.03] p-5 shadow-2xl md:p-6">
+            <article
+              className="glass-panel relative flex min-h-[430px] cursor-text flex-col overflow-hidden rounded-[28px] border-white/10 bg-white/[0.03] p-5 shadow-2xl md:p-6"
+              onClick={() => terminalInputRef.current?.focus()}
+            >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.08),transparent_34%),radial-gradient(circle_at_80%_80%,rgba(168,85,247,0.08),transparent_38%)]" />
               <div className="relative z-10 flex items-center justify-between border-b border-white/5 pb-4">
                 <div className="flex items-center gap-2" aria-hidden="true">
@@ -1071,35 +1276,75 @@ export default function App() {
                   <span className="h-2.5 w-2.5 rounded-full bg-amber-400/90" />
                   <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/90" />
                 </div>
-                <span className="font-mono text-[9px] uppercase tracking-widest text-cyan-300">
-                  Secure Connection
-                </span>
-              </div>
-
-              <div className="relative z-10 mt-6 flex-1 font-mono text-[11px] leading-6 text-slate-400 sm:text-xs">
-                <p className="text-slate-300">Welcome to Akshita&apos;s professional contact terminal.</p>
-                <p className="mt-1">Use the transmission form or connect through a verified channel.</p>
-
-                <div className="mt-8 space-y-4">
-                  {[
-                    ['whoami', 'Akshita Sarda · System Engineer'],
-                    ['focus', 'TCS BaNCS · SBI Core Banking Support'],
-                    ['skills', 'Unix · Linux · SQL · Autosys · Shell Scripting'],
-                    ['status', 'Open to meaningful technical conversations'],
-                  ].map(([command, output]) => (
-                    <div key={command}>
-                      <p className="text-cyan-300">
-                        akshita@portfolio:~$ <span className="text-purple-300">{command}</span>
-                      </p>
-                      <p className="pl-4 text-slate-400">{output}</p>
-                    </div>
-                  ))}
+                <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-widest text-cyan-300">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-300" />
+                  Interactive Terminal
                 </div>
               </div>
 
-              <div className="relative z-10 mt-6 flex items-center gap-2 border-t border-white/5 pt-4 font-mono text-[10px] text-slate-500">
-                <span className="text-cyan-300">akshita@contact:~$</span>
-                <span className="animate-pulse text-purple-300">_</span>
+              <div
+                className="terminal-scrollbar relative z-10 mt-5 min-h-0 flex-1 overflow-y-auto pr-2 font-mono text-[11px] leading-6 sm:text-xs"
+                aria-live="polite"
+              >
+                {terminalEntries.map((entry) => (
+                  <div key={entry.id} className="mb-4 last:mb-0">
+                    {entry.command && (
+                      <p className="break-words text-cyan-300">
+                        akshita@portfolio:~$ <span className="text-purple-300">{entry.command}</span>
+                      </p>
+                    )}
+                    <div
+                      className={`space-y-0.5 whitespace-pre-wrap break-words ${entry.command ? 'pl-4' : ''} ${
+                        entry.tone === 'error'
+                          ? 'text-rose-300'
+                          : entry.tone === 'success'
+                            ? 'text-slate-300'
+                            : 'text-slate-400'
+                      }`}
+                    >
+                      {entry.lines.map((line, lineIndex) => (
+                        <p key={`${entry.id}-${lineIndex}`}>{line || '\u00a0'}</p>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+                <div ref={terminalEndRef} />
+              </div>
+
+              <div className="relative z-10 mt-4 border-t border-white/5 pt-4">
+                <div className="flex items-center gap-2 font-mono text-[11px] sm:text-xs">
+                  <label htmlFor="portfolio-terminal-input" className="shrink-0 text-cyan-300">
+                    akshita@portfolio:~$
+                  </label>
+                  <input
+                    id="portfolio-terminal-input"
+                    ref={terminalInputRef}
+                    type="text"
+                    value={terminalCommand}
+                    onChange={(event) => setTerminalCommand(event.target.value)}
+                    onKeyDown={handleTerminalKeyDown}
+                    autoComplete="off"
+                    autoCapitalize="none"
+                    spellCheck={false}
+                    aria-label="Portfolio terminal command"
+                    placeholder='Type "help" and press Enter'
+                    className="min-w-0 flex-1 bg-transparent text-purple-200 caret-cyan-300 outline-none placeholder:text-slate-700"
+                  />
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleTerminalCommand(terminalCommand);
+                      terminalInputRef.current?.focus();
+                    }}
+                    className="rounded-lg border border-cyan-400/20 bg-cyan-400/10 px-3 py-1.5 font-mono text-[9px] font-bold uppercase tracking-widest text-cyan-200 transition hover:border-cyan-300/40 hover:bg-cyan-400/15"
+                  >
+                    Run
+                  </button>
+                </div>
+                <p className="mt-2 font-mono text-[8px] uppercase tracking-widest text-slate-600">
+                  Enter to run · ↑/↓ history · Tab autocomplete · clear to reset
+                </p>
               </div>
             </article>
 
