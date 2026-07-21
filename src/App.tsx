@@ -10,6 +10,7 @@ import {
   GraduationCap,
   Github,
   Languages,
+  Linkedin,
   Mail,
   MapPin,
   Phone,
@@ -370,6 +371,7 @@ export default function App() {
     'contact',
     'resume',
     'github',
+    'linkedin',
     'email',
     'date',
     'clear',
@@ -422,6 +424,7 @@ export default function App() {
           'contact    Show verified contact details',
           'resume     Download the resume PDF',
           'github     Open GitHub profile',
+          'linkedin   Open LinkedIn profile',
           'email      Compose an email',
           'date       Display local date and time',
           'clear      Clear the terminal screen',
@@ -462,6 +465,7 @@ export default function App() {
         addTerminalEntry(enteredCommand, [
           'Email: akshita2k2@gmail.com',
           'Phone: +91 94135 86475',
+          'LinkedIn: linkedin.com/in/akshita-maheshwari-42b577244',
           'Location: SBI, Belapur · Navi Mumbai',
         ]);
         break;
@@ -478,6 +482,14 @@ export default function App() {
       case 'github':
         addTerminalEntry(enteredCommand, ['Opening github.com/AkshitaSarda...'], 'success');
         window.open('https://github.com/AkshitaSarda', '_blank', 'noopener,noreferrer');
+        break;
+      case 'linkedin':
+        addTerminalEntry(enteredCommand, ['Opening LinkedIn profile...'], 'success');
+        window.open(
+          'https://www.linkedin.com/in/akshita-maheshwari-42b577244',
+          '_blank',
+          'noopener,noreferrer',
+        );
         break;
       case 'email':
         addTerminalEntry(enteredCommand, ['Opening your default email application...'], 'success');
@@ -1536,6 +1548,17 @@ export default function App() {
                 </a>
 
                 <a
+                  href="https://www.linkedin.com/in/akshita-maheshwari-42b577244"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Open Akshita Sarda's LinkedIn profile"
+                  className="glass-panel glass-panel-hover flex items-center justify-center gap-2 rounded-xl border-white/10 px-3 py-2.5 text-[11px] font-semibold text-slate-300 hover:text-cyan-300"
+                >
+                  <Linkedin className="h-4 w-4" />
+                  LinkedIn
+                </a>
+
+                <a
                   href="tel:+919413586475"
                   className="glass-panel glass-panel-hover flex items-center justify-center gap-2 rounded-xl border-white/10 px-3 py-2.5 text-[11px] font-semibold text-slate-300 hover:text-purple-300"
                 >
@@ -1545,10 +1568,10 @@ export default function App() {
 
                 <a
                   href="mailto:akshita2k2@gmail.com"
-                  className="glass-panel glass-panel-hover flex items-center justify-center gap-2 rounded-xl border-white/10 px-3 py-2.5 text-[11px] font-semibold text-slate-300 hover:text-cyan-300 sm:col-span-2"
+                  className="glass-panel glass-panel-hover flex items-center justify-center gap-2 rounded-xl border-white/10 px-3 py-2.5 text-[11px] font-semibold text-slate-300 hover:text-cyan-300"
                 >
                   <Mail className="h-4 w-4" />
-                  akshita2k2@gmail.com
+                  <span className="truncate">akshita2k2@gmail.com</span>
                 </a>
 
                 <div className="glass-panel flex items-center justify-center gap-2 rounded-xl border-white/10 px-3 py-2.5 text-[11px] font-semibold text-slate-400 sm:col-span-2">
