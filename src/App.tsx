@@ -1559,22 +1559,10 @@ export default function App() {
       </div>
       */}
 
-      <footer className="border-t border-white/5 bg-[#030307] px-4 py-12 text-center">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="space-y-1 text-left">
-            <span className="block font-mono text-xs uppercase tracking-widest text-white">
-              AKSHITA SARDA / SYSTEM ENGINEER
-            </span>
-            <span className="block text-[10px] text-neutral-500">
-              © {new Date().getFullYear()} Akshita Sarda. Core Banking Application Support Portfolio.
-            </span>
-          </div>
-
-          <div className="flex gap-4">
-            <span className="font-mono text-[10px] uppercase text-neutral-500">SUPPORT_STATUS: ACTIVE</span>
-            <span className="font-mono text-[10px] uppercase text-neutral-500">VITE_BUILD: OK</span>
-          </div>
-        </div>
+      <footer className="border-t border-white/5 bg-[#030307] px-4 py-10 text-center">
+        <p className="mx-auto max-w-7xl font-mono text-[10px] tracking-wide text-neutral-400 sm:text-xs">
+          Designed and engineered by Akshita Sarda © 2026. All rights reserved.
+        </p>
       </footer>
     </div>
   );
