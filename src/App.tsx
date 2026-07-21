@@ -705,22 +705,22 @@ export default function App() {
           </div>
 
           <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center justify-center text-center">
-            <div className="relative grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3 px-2 sm:gap-5 md:px-5">
+            <div className="relative grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(72px,0.34fr)] items-center gap-3 overflow-visible px-2 sm:gap-5 md:grid-cols-[minmax(0,1fr)_auto_minmax(112px,0.42fr)] md:px-5">
               <div aria-hidden="true" />
 
-              <div className="relative">
+              <div className="relative overflow-visible">
                 <div className="pointer-events-none absolute left-[24%] top-[56%] hidden h-6 w-32 -skew-x-12 bg-[#030307] shadow-[0_0_26px_rgba(34,211,238,0.18)] md:block" />
-                <div className="pointer-events-none absolute right-[22%] top-[56%] hidden h-6 w-36 skew-x-12 bg-[#030307] shadow-[0_0_26px_rgba(168,85,247,0.16)] md:block" />
+                <div className="pointer-events-none absolute right-[19%] top-[56%] hidden h-6 w-28 skew-x-12 bg-[#030307] shadow-[0_0_26px_rgba(168,85,247,0.16)] md:block" />
 
-                <h1 className="relative text-[clamp(2.8rem,7vw,6.4rem)] font-black uppercase leading-[0.9] tracking-[-0.055em] text-white">
+                <h1 className="relative overflow-visible text-[clamp(2.8rem,7vw,6.4rem)] font-black uppercase leading-[0.9] tracking-[-0.045em] text-white">
                   <span className="block sm:inline">Akshita</span>{' '}
-                  <span className="bg-gradient-to-r from-cyan-300 via-cyan-400 to-purple-500 bg-clip-text text-transparent">
+                  <span className="inline-block bg-gradient-to-r from-cyan-300 via-cyan-400 to-purple-500 bg-clip-text pr-[0.12em] text-transparent">
                     Sarda
                   </span>
                 </h1>
               </div>
 
-              <div aria-hidden="true" className="hidden min-w-0 items-center md:flex">
+              <div aria-hidden="true" className="hidden min-w-[72px] items-center justify-start pl-3 md:flex md:min-w-[112px] md:pl-5">
                 <span className="h-3 w-3 shrink-0 rounded-full border border-purple-300/70 bg-purple-500 shadow-[0_0_18px_rgba(168,85,247,0.85)]" />
                 <span className="h-px min-w-8 flex-1 bg-gradient-to-r from-purple-400/80 via-purple-400/45 to-transparent" />
               </div>
