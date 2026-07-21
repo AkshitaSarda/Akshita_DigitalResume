@@ -85,7 +85,7 @@ export default function App() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseRef = useRef({ x: 0, y: 0, radius: 150 });
   const terminalInputRef = useRef<HTMLInputElement>(null);
-  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const terminalOutputRef = useRef<HTMLDivElement>(null);
   const terminalEntryIdRef = useRef<number>(1);
 
   const milestones: Milestone[] = [
@@ -330,8 +330,30 @@ export default function App() {
   */
 
   useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    const terminalOutput = terminalOutputRef.current;
+    if (!terminalOutput) return;
+
+    terminalOutput.scrollTo({
+      top: terminalOutput.scrollHeight,
+      behavior: terminalEntries.length > 1 ? 'smooth' : 'auto',
+    });
   }, [terminalEntries]);
+
+  useEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = 'manual';
+
+    if (!window.location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      window.requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      });
+    }
+
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, []);
 
   const terminalCommands = [
     'help',
@@ -1283,6 +1305,7 @@ export default function App() {
               </div>
 
               <div
+                ref={terminalOutputRef}
                 className="terminal-scrollbar relative z-10 mt-4 min-h-0 flex-1 overflow-y-auto pr-2 font-mono text-[11px] leading-5 sm:text-xs"
                 aria-live="polite"
               >
@@ -1308,7 +1331,6 @@ export default function App() {
                     </div>
                   </div>
                 ))}
-                <div ref={terminalEndRef} />
               </div>
 
               <div className="relative z-10 mt-3 border-t border-white/5 pt-3">
