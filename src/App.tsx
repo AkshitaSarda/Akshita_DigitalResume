@@ -8,9 +8,14 @@ import {
   Database,
   Download,
   GraduationCap,
+  Github,
   Languages,
+  Mail,
+  MapPin,
+  Phone,
   Search,
   Server,
+  Send,
   Settings2,
   ShieldCheck,
   Sparkles,
@@ -304,6 +309,22 @@ export default function App() {
   const activeMilestone = milestones[currentMilestoneIdx];
   const milestoneProgress = (currentMilestoneIdx / (milestones.length - 1)) * 100;
 
+  const handleContactSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get('name') || '').trim();
+    const email = String(formData.get('email') || '').trim();
+    const message = String(formData.get('message') || '').trim();
+
+    const subject = encodeURIComponent(`Portfolio enquiry from ${name || 'website visitor'}`);
+    const body = encodeURIComponent(
+      `Name: ${name || 'Not provided'}\nEmail: ${email || 'Not provided'}\n\nMessage:\n${message}`,
+    );
+
+    window.location.href = `mailto:akshita2k2@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <div
       id="root-container"
@@ -352,7 +373,7 @@ export default function App() {
                 />
               </div>
             </div>
-            <span className="truncate text-sm font-semibold tracking-[0.25em] text-white">AKSHITA</span>
+            <span className="hidden truncate text-sm font-semibold tracking-[0.25em] text-white lg:inline">AKSHITA</span>
           </div>
 
           <nav aria-label="Primary navigation" className="flex items-center justify-center gap-1 px-1 sm:gap-2 sm:px-2">
@@ -360,6 +381,7 @@ export default function App() {
               { label: 'Experience', href: '#experience-section' },
               { label: 'Awards', href: '#awards-section' },
               { label: 'About', href: '#about-section' },
+              { label: 'Contact', href: '#contact-section' },
             ].map((item) => (
               <a
                 key={item.label}
@@ -1011,6 +1033,173 @@ export default function App() {
                   <span className="mt-3 block font-mono text-[8px] uppercase tracking-widest text-slate-500">Languages</span>
                   <p className="mt-1 text-xs font-semibold text-white">Hindi · English · German</p>
                 </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <section id="contact-section" className="scroll-mt-28 space-y-8">
+          <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+            <div>
+              <div className="flex items-center gap-2">
+                <Mail className="h-4 w-4 text-cyan-300" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-cyan-300">
+                  05 / Contact Channel
+                </span>
+              </div>
+              <h2 className="mt-2 text-3xl font-black uppercase tracking-tight text-white md:text-4xl">
+                Contact{' '}
+                <span className="bg-gradient-to-r from-cyan-300 to-purple-500 bg-clip-text text-transparent">
+                  Hub
+                </span>
+              </h2>
+            </div>
+
+            <p className="max-w-lg font-mono text-xs leading-relaxed text-slate-400 lg:justify-self-end">
+              Start a conversation about production support, Core Banking operations, technical opportunities, or
+              professional collaboration.
+            </p>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[1.12fr_0.88fr] lg:items-stretch">
+            <article className="glass-panel relative flex min-h-[430px] flex-col overflow-hidden rounded-[28px] border-white/10 bg-white/[0.03] p-5 shadow-2xl md:p-6">
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.08),transparent_34%),radial-gradient(circle_at_80%_80%,rgba(168,85,247,0.08),transparent_38%)]" />
+              <div className="relative z-10 flex items-center justify-between border-b border-white/5 pb-4">
+                <div className="flex items-center gap-2" aria-hidden="true">
+                  <span className="h-2.5 w-2.5 rounded-full bg-rose-500/90" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-amber-400/90" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/90" />
+                </div>
+                <span className="font-mono text-[9px] uppercase tracking-widest text-cyan-300">
+                  Secure Connection
+                </span>
+              </div>
+
+              <div className="relative z-10 mt-6 flex-1 font-mono text-[11px] leading-6 text-slate-400 sm:text-xs">
+                <p className="text-slate-300">Welcome to Akshita&apos;s professional contact terminal.</p>
+                <p className="mt-1">Use the transmission form or connect through a verified channel.</p>
+
+                <div className="mt-8 space-y-4">
+                  {[
+                    ['whoami', 'Akshita Sarda · System Engineer'],
+                    ['focus', 'TCS BaNCS · SBI Core Banking Support'],
+                    ['skills', 'Unix · Linux · SQL · Autosys · Shell Scripting'],
+                    ['status', 'Open to meaningful technical conversations'],
+                  ].map(([command, output]) => (
+                    <div key={command}>
+                      <p className="text-cyan-300">
+                        akshita@portfolio:~$ <span className="text-purple-300">{command}</span>
+                      </p>
+                      <p className="pl-4 text-slate-400">{output}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative z-10 mt-6 flex items-center gap-2 border-t border-white/5 pt-4 font-mono text-[10px] text-slate-500">
+                <span className="text-cyan-300">akshita@contact:~$</span>
+                <span className="animate-pulse text-purple-300">_</span>
+              </div>
+            </article>
+
+            <div className="flex flex-col gap-4">
+              <form
+                onSubmit={handleContactSubmit}
+                className="glass-panel rounded-[28px] border-white/10 bg-white/[0.035] p-5 shadow-2xl md:p-6"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="font-mono text-[9px] uppercase tracking-widest text-purple-300">
+                      Transmission Packet
+                    </span>
+                    <h3 className="mt-1 text-lg font-bold text-white">Send a message</h3>
+                  </div>
+                  <Send className="h-5 w-5 text-cyan-300" />
+                </div>
+
+                <div className="mt-5 space-y-3">
+                  <label className="block">
+                    <span className="sr-only">Your name</span>
+                    <input
+                      name="name"
+                      type="text"
+                      required
+                      autoComplete="name"
+                      placeholder="Your name"
+                      className="w-full rounded-xl border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-400/40 focus:ring-2 focus:ring-cyan-400/10"
+                    />
+                  </label>
+
+                  <label className="block">
+                    <span className="sr-only">Your email address</span>
+                    <input
+                      name="email"
+                      type="email"
+                      required
+                      autoComplete="email"
+                      placeholder="Your email address"
+                      className="w-full rounded-xl border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-400/40 focus:ring-2 focus:ring-cyan-400/10"
+                    />
+                  </label>
+
+                  <label className="block">
+                    <span className="sr-only">Your message</span>
+                    <textarea
+                      name="message"
+                      required
+                      rows={5}
+                      placeholder="Describe your inquiry or opportunity..."
+                      className="w-full resize-none rounded-xl border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-purple-400/40 focus:ring-2 focus:ring-purple-400/10"
+                    />
+                  </label>
+                </div>
+
+                <button
+                  type="submit"
+                  className="group relative mt-4 flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-fuchsia-500 via-purple-500 to-cyan-400 px-5 py-3 text-xs font-extrabold uppercase tracking-widest text-slate-950 shadow-[0_0_28px_rgba(34,211,238,0.14)] transition hover:-translate-y-0.5 hover:shadow-[0_0_35px_rgba(168,85,247,0.22)]"
+                >
+                  <span className="absolute inset-0 translate-x-[-110%] bg-gradient-to-r from-transparent via-white/35 to-transparent transition-transform duration-700 group-hover:translate-x-[110%]" />
+                  <Send className="relative h-4 w-4" />
+                  <span className="relative">Send Message</span>
+                </button>
+
+                <p className="mt-3 text-center font-mono text-[9px] leading-relaxed text-slate-500">
+                  This opens your default email application with the message prepared.
+                </p>
+              </form>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                <a
+                  href="https://github.com/AkshitaSarda"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="glass-panel glass-panel-hover flex items-center justify-center gap-2 rounded-2xl border-white/10 p-4 text-xs font-semibold text-slate-300 hover:text-cyan-300"
+                >
+                  <Github className="h-4 w-4" />
+                  GitHub
+                </a>
+
+                <a
+                  href="tel:+919413586475"
+                  className="glass-panel glass-panel-hover flex items-center justify-center gap-2 rounded-2xl border-white/10 p-4 text-xs font-semibold text-slate-300 hover:text-purple-300"
+                >
+                  <Phone className="h-4 w-4" />
+                  +91 94135 86475
+                </a>
+
+                <a
+                  href="mailto:akshita2k2@gmail.com"
+                  className="glass-panel glass-panel-hover flex items-center justify-center gap-2 rounded-2xl border-white/10 p-4 text-xs font-semibold text-slate-300 hover:text-cyan-300 sm:col-span-2"
+                >
+                  <Mail className="h-4 w-4" />
+                  akshita2k2@gmail.com
+                </a>
+
+                <div className="glass-panel flex items-center justify-center gap-2 rounded-2xl border-white/10 p-4 text-xs font-semibold text-slate-400 sm:col-span-2">
+                  <MapPin className="h-4 w-4 text-purple-300" />
+                  SBI, Belapur · Navi Mumbai
+                </div>
               </div>
             </div>
           </div>
