@@ -355,14 +355,20 @@ export default function App() {
             <span className="truncate text-sm font-semibold tracking-[0.25em] text-white">AKSHITA</span>
           </div>
 
-          <nav aria-label="Primary navigation" className="flex items-center justify-center px-2">
-            <a
-              href="#experience-section"
-              className="group relative px-3 py-2 text-[11px] font-medium tracking-wide text-slate-300 transition hover:text-cyan-300 sm:text-xs"
-            >
-              Experience
-              <span className="absolute inset-x-3 -bottom-0.5 h-px origin-center scale-x-0 bg-gradient-to-r from-cyan-400 to-purple-500 transition-transform duration-200 group-hover:scale-x-100" />
-            </a>
+          <nav aria-label="Primary navigation" className="flex items-center justify-center gap-1 px-1 sm:gap-2 sm:px-2">
+            {[
+              { label: 'Experience', href: '#experience-section' },
+              { label: 'Awards', href: '#awards-section' },
+            ].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="group relative px-2 py-2 text-[10px] font-medium tracking-wide text-slate-300 transition hover:text-cyan-300 sm:px-3 sm:text-xs"
+              >
+                {item.label}
+                <span className="absolute inset-x-2 -bottom-0.5 h-px origin-center scale-x-0 bg-gradient-to-r from-cyan-400 to-purple-500 transition-transform duration-200 group-hover:scale-x-100 sm:inset-x-3" />
+              </a>
+            ))}
           </nav>
 
           <div className="flex justify-end pr-0.5 md:pr-2">
@@ -763,6 +769,120 @@ export default function App() {
           </div>
         </section>
 
+        <section id="awards-section" className="scroll-mt-28 space-y-8">
+          <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+            <div>
+              <div className="flex items-center gap-2">
+                <Award className="h-4 w-4 text-fuchsia-400" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-fuchsia-300">
+                  03 / Commendations
+                </span>
+              </div>
+              <h2 className="mt-2 text-3xl font-black uppercase tracking-tight text-white md:text-4xl">
+                Awards &amp;{' '}
+                <span className="bg-gradient-to-r from-cyan-300 to-purple-500 bg-clip-text text-transparent">
+                  Recognition
+                </span>
+              </h2>
+            </div>
+
+            <p className="max-w-lg font-mono text-xs leading-relaxed text-slate-400 lg:justify-self-end">
+              Team recognition earned through dependable production support, collaboration, and contribution to
+              business-critical SBI Core Banking operations.
+            </p>
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="glass-panel relative min-h-[390px] overflow-hidden rounded-[30px] border-white/10 bg-white/[0.035] p-5 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-white/5 pb-3 font-mono text-[9px] uppercase tracking-widest text-slate-500">
+                <span>Recognition Gallery</span>
+                <span className="text-fuchsia-300">Team Excellence</span>
+              </div>
+
+              <div className="pointer-events-none absolute inset-0">
+                <div className="absolute left-[16%] top-[28%] h-1 w-1 rounded-full bg-amber-300 shadow-[0_0_12px_rgba(252,211,77,0.9)]" />
+                <div className="absolute left-[27%] top-[48%] h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.9)]" />
+                <div className="absolute right-[22%] top-[24%] h-1 w-1 rounded-full bg-fuchsia-300 shadow-[0_0_12px_rgba(240,171,252,0.9)]" />
+                <div className="absolute right-[14%] top-[54%] h-1.5 w-1.5 rounded-full bg-purple-300 shadow-[0_0_12px_rgba(196,181,253,0.9)]" />
+                <div className="absolute bottom-0 left-1/2 h-48 w-[78%] -translate-x-1/2 rounded-full bg-gradient-to-t from-cyan-500/[0.07] via-purple-500/[0.035] to-transparent blur-2xl" />
+                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[linear-gradient(rgba(168,85,247,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.06)_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:linear-gradient(to_top,black,transparent)]" />
+              </div>
+
+              <div className="relative grid min-h-[315px] grid-cols-2 items-end gap-7 px-2 pb-5 pt-10 sm:px-8">
+                <div className="flex flex-col items-center">
+                  <div className="relative flex h-36 w-36 items-center justify-center sm:h-40 sm:w-40">
+                    <div className="absolute inset-3 rounded-full border border-amber-300/35 shadow-[0_0_34px_rgba(251,191,36,0.13)]" />
+                    <div className="absolute inset-7 rotate-45 rounded-2xl border border-amber-300/25 bg-gradient-to-br from-amber-300/15 to-orange-500/5" />
+                    <Award className="relative z-10 h-14 w-14 text-amber-300 drop-shadow-[0_0_18px_rgba(252,211,77,0.4)]" />
+                  </div>
+                  <div className="h-16 w-20 bg-gradient-to-b from-slate-700/80 to-slate-950 [clip-path:polygon(37%_0,63%_0,75%_100%,25%_100%)]" />
+                  <div className="h-5 w-28 rounded-t-lg border border-amber-300/20 bg-slate-950/95 shadow-[0_0_24px_rgba(251,191,36,0.08)]" />
+                  <span className="mt-3 text-center font-mono text-[8px] uppercase tracking-[0.2em] text-amber-200/80">
+                    Star Team Award
+                  </span>
+                </div>
+
+                <div className="flex flex-col items-center">
+                  <div className="relative flex h-36 w-36 items-center justify-center sm:h-40 sm:w-40">
+                    <div className="absolute inset-2 rounded-full border-2 border-cyan-300/35 shadow-[0_0_34px_rgba(34,211,238,0.14)]" />
+                    <div className="absolute inset-6 rotate-45 rounded-[28px] border border-purple-300/30 bg-gradient-to-br from-cyan-300/10 via-purple-400/15 to-fuchsia-400/5" />
+                    <Sparkles className="relative z-10 h-14 w-14 text-cyan-300 drop-shadow-[0_0_18px_rgba(34,211,238,0.45)]" />
+                  </div>
+                  <div className="h-16 w-20 bg-gradient-to-b from-slate-700/80 to-slate-950 [clip-path:polygon(35%_0,65%_0,76%_100%,24%_100%)]" />
+                  <div className="h-5 w-28 rounded-t-lg border border-cyan-300/20 bg-slate-950/95 shadow-[0_0_24px_rgba(34,211,238,0.08)]" />
+                  <span className="mt-3 text-center font-mono text-[8px] uppercase tracking-[0.2em] text-cyan-200/80">
+                    Best Team Award
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid gap-4">
+              <article className="glass-panel relative overflow-hidden rounded-[26px] border-fuchsia-400/15 bg-fuchsia-400/[0.025] p-6 transition hover:-translate-y-1 hover:border-fuchsia-400/30">
+                <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-fuchsia-400 via-purple-500 to-cyan-400" />
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <span className="rounded-full border border-fuchsia-400/15 bg-fuchsia-400/10 px-3 py-1 font-mono text-[8px] uppercase tracking-widest text-fuchsia-300">
+                    Team Recognition
+                  </span>
+                  <Award className="h-5 w-5 text-fuchsia-300" />
+                </div>
+                <h3 className="mt-5 text-lg font-bold text-white">Star Team Award</h3>
+                <p className="mt-1 font-mono text-[9px] uppercase tracking-widest text-cyan-300">
+                  Tata Consultancy Services
+                </p>
+                <p className="mt-4 text-xs leading-relaxed text-slate-400">
+                  Recognition for contributing to dependable Core Banking production support through coordination,
+                  ownership, and consistent teamwork.
+                </p>
+                <div className="mt-5 border-t border-white/5 pt-4 font-mono text-[8px] uppercase leading-relaxed tracking-wider text-slate-500">
+                  Focus: <span className="text-cyan-300">Collaboration · Reliability · Operational Support</span>
+                </div>
+              </article>
+
+              <article className="glass-panel relative overflow-hidden rounded-[26px] border-cyan-400/15 bg-cyan-400/[0.025] p-6 transition hover:-translate-y-1 hover:border-cyan-400/30">
+                <div className="absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-cyan-400 via-blue-500 to-purple-500" />
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <span className="rounded-full border border-cyan-400/15 bg-cyan-400/10 px-3 py-1 font-mono text-[8px] uppercase tracking-widest text-cyan-300">
+                    Operational Excellence
+                  </span>
+                  <Sparkles className="h-5 w-5 text-cyan-300" />
+                </div>
+                <h3 className="mt-5 text-lg font-bold text-white">Best Team Award</h3>
+                <p className="mt-1 font-mono text-[9px] uppercase tracking-widest text-purple-300">
+                  SBI Core Banking Support Team
+                </p>
+                <p className="mt-4 text-xs leading-relaxed text-slate-400">
+                  Team recognition for collaborative production support and disciplined handling of critical banking
+                  operations and service responsibilities.
+                </p>
+                <div className="mt-5 border-t border-white/5 pt-4 font-mono text-[8px] uppercase leading-relaxed tracking-wider text-slate-500">
+                  Focus: <span className="text-cyan-300">Teamwork · Service Continuity · SLA Discipline</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
         <section id="additional-information-section" className="space-y-8">
           <div>
             <div className="flex items-center gap-2">
@@ -774,21 +894,13 @@ export default function App() {
             <h2 className="mt-1 text-2xl font-light md:text-3xl">Additional Information</h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6">
             <div className="glass-panel rounded-[32px] border-white/10 p-7">
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-400">
                 <Languages className="h-5 w-5" />
               </div>
               <h3 className="text-base font-bold text-white">Languages</h3>
               <p className="mt-2 text-sm leading-relaxed text-neutral-400">Hindi, English, and German</p>
-            </div>
-
-            <div className="glass-panel rounded-[32px] border-white/10 p-7">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-purple-500/10 text-purple-400">
-                <Award className="h-5 w-5" />
-              </div>
-              <h3 className="text-base font-bold text-white">Awards & Activities</h3>
-              <p className="mt-2 text-sm leading-relaxed text-neutral-400">Star Team Award and Best Team Award</p>
             </div>
           </div>
         </section>
