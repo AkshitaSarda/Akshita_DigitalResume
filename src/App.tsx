@@ -1259,8 +1259,8 @@ export default function App() {
             </div>
 
             <p className="max-w-lg font-mono text-xs leading-relaxed text-slate-400 lg:justify-self-end">
-              Start a conversation about production support, Core Banking operations, technical opportunities, or
-              professional collaboration.
+              Initiate a secure terminal packet with Akshita. Use either the command terminal console or standard
+              communication lines.
             </p>
           </div>
 
