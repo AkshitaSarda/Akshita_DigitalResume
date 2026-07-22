@@ -12,7 +12,9 @@ import {
   Languages,
   Linkedin,
   Mail,
+  Menu,
   MapPin,
+  X,
   Phone,
   Search,
   Server,
@@ -53,6 +55,7 @@ interface ChatMessage {
 */
 
 export default function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [currentMilestoneIdx, setCurrentMilestoneIdx] = useState<number>(0);
   const [terminalEntries, setTerminalEntries] = useState<TerminalEntry[]>([
     {
@@ -630,93 +633,98 @@ export default function App() {
         <div className="absolute -bottom-[100px] left-[20%] h-[400px] w-[700px] rounded-full bg-slate-500/10 blur-[120px] animate-[spin_50s_linear_infinite]" />
       </div>
 
-      <header id="header-nav" className="sticky top-0 z-50 w-full px-4 py-3 md:px-8">
-        <div className="glass-panel mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center rounded-full border-white/10 bg-white/5 p-2 shadow-lg backdrop-blur-md">
-          <div className="flex min-w-0 items-center gap-3 pl-2 md:pl-4">
+      <header id="header-nav" className="sticky top-0 z-50 w-full px-3 py-3 sm:px-4 md:px-8">
+        <div className="glass-panel relative mx-auto flex max-w-7xl items-center justify-between rounded-[1.4rem] border-white/10 bg-white/5 px-3 py-2 shadow-lg backdrop-blur-md sm:rounded-full sm:px-4">
+          <div className="flex min-w-0 items-center gap-2.5">
             <div className="group/profile relative shrink-0">
               <button
                 type="button"
                 aria-label="Preview Akshita Sarda profile picture"
-                className="relative block h-9 w-9 overflow-hidden rounded-full border border-blue-400/50 bg-neutral-900 shadow-[0_0_18px_rgba(59,130,246,0.24)] transition duration-200 hover:scale-105 hover:border-purple-400/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030307]"
+                className="relative block h-9 w-9 overflow-hidden rounded-full border border-blue-400/50 bg-neutral-900 shadow-[0_0_18px_rgba(59,130,246,0.24)] transition duration-200 hover:scale-105 hover:border-purple-400/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
               >
-                <img
-                  src="/Akshita_Profile_Thumb.webp"
-                  alt="Akshita Sarda"
-                  className="h-full w-full object-cover transition duration-300 group-hover/profile:scale-110"
-                />
+                <img src="/Akshita_Profile_Thumb.webp" alt="Akshita Sarda" className="h-full w-full object-cover" />
                 <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/20" />
               </button>
 
               <div
                 role="img"
                 aria-label="Enlarged profile picture of Akshita Sarda"
-                className="pointer-events-none absolute left-0 top-[calc(100%+0.75rem)] z-[70] w-[190px] origin-top-left translate-y-2 scale-95 overflow-hidden rounded-[1.4rem] border border-white/15 bg-neutral-950/95 p-1.5 opacity-0 shadow-[0_24px_70px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-200 group-hover/profile:translate-y-0 group-hover/profile:scale-100 group-hover/profile:opacity-100 group-focus-within/profile:translate-y-0 group-focus-within/profile:scale-100 group-focus-within/profile:opacity-100 sm:w-[225px]"
+                className="pointer-events-none absolute left-0 top-[calc(100%+0.75rem)] z-[70] hidden w-[225px] origin-top-left translate-y-2 scale-95 overflow-hidden rounded-[1.4rem] border border-white/15 bg-neutral-950/95 p-1.5 opacity-0 shadow-[0_24px_70px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-200 group-hover/profile:translate-y-0 group-hover/profile:scale-100 group-hover/profile:opacity-100 group-focus-within/profile:translate-y-0 group-focus-within/profile:scale-100 group-focus-within/profile:opacity-100 md:block"
               >
-                <img
-                  src="/Akshita_Profile.webp"
-                  alt=""
-                  aria-hidden="true"
-                  className="block h-[250px] w-full rounded-[1.05rem] object-cover object-top sm:h-[300px]"
-                />
+                <img src="/Akshita_Profile.webp" alt="" aria-hidden="true" className="block h-[300px] w-full rounded-[1.05rem] object-cover object-top" />
               </div>
             </div>
-            <span className="hidden truncate text-sm font-semibold tracking-[0.25em] text-white lg:inline">AKSHITA</span>
+            <span className="truncate text-xs font-semibold tracking-[0.18em] text-white sm:text-sm sm:tracking-[0.25em]">AKSHITA</span>
           </div>
 
-          <nav aria-label="Primary navigation" className="flex items-center justify-center gap-1 px-1 sm:gap-2 sm:px-2">
+          <nav aria-label="Primary navigation" className="hidden items-center justify-center gap-1 lg:flex">
             {[
               { label: 'Experience', href: '#experience-section' },
               { label: 'Awards', href: '#awards-section' },
               { label: 'About', href: '#about-section' },
               { label: 'Contact', href: '#contact-section' },
             ].map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="group relative px-2 py-2 text-[10px] font-medium tracking-wide text-slate-300 transition hover:text-cyan-300 sm:px-3 sm:text-xs"
-              >
+              <a key={item.label} href={item.href} className="group relative px-3 py-2 text-xs font-medium tracking-wide text-slate-300 transition hover:text-cyan-300">
                 {item.label}
-                <span className="absolute inset-x-2 -bottom-0.5 h-px origin-center scale-x-0 bg-gradient-to-r from-cyan-400 to-purple-500 transition-transform duration-200 group-hover:scale-x-100 sm:inset-x-3" />
+                <span className="absolute inset-x-3 -bottom-0.5 h-px origin-center scale-x-0 bg-gradient-to-r from-cyan-400 to-purple-500 transition-transform duration-200 group-hover:scale-x-100" />
               </a>
             ))}
           </nav>
 
-          <div className="flex justify-end pr-0.5 md:pr-2">
+          <div className="flex items-center gap-2">
             <a
               href="/Akshita_Sarda_Resume.pdf"
               download="Akshita_Sarda_Resume.pdf"
               aria-label="Download Akshita Sarda resume"
-              className="flex items-center gap-1.5 rounded-full border border-blue-500/20 bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-3 py-1.5 text-[10px] font-medium uppercase tracking-wider text-blue-300 transition hover:border-blue-400/40 hover:bg-blue-500/15 hover:text-blue-200 sm:text-xs"
+              className="flex items-center gap-1.5 rounded-full border border-blue-500/20 bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-2.5 py-2 text-[10px] font-medium uppercase tracking-wider text-blue-300 transition hover:border-blue-400/40 sm:px-3"
             >
-              <Download className="h-3.5 w-3.5" />
-              <span className="hidden sm:inline">Download Resume</span>
-              <span className="sm:hidden">Resume</span>
+              <Download className="h-4 w-4" />
+              <span className="hidden sm:inline">Resume</span>
             </a>
+            <button
+              type="button"
+              aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isMobileMenuOpen}
+              onClick={() => setIsMobileMenuOpen((open) => !open)}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 transition hover:bg-white/10 lg:hidden"
+            >
+              {isMobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
           </div>
 
-          {/* CHATBOT DISABLED TEMPORARILY
-          <button
-            id="action-chat-btn"
-            onClick={() => setIsChatOpen(true)}
-            className="mr-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs font-medium uppercase tracking-widest text-white transition hover:bg-white/20"
-          >
-            Direct AI Inquiry
-          </button>
-          */}
+          {isMobileMenuOpen && (
+            <nav aria-label="Mobile navigation" className="absolute left-0 right-0 top-[calc(100%+0.6rem)] grid gap-1 rounded-2xl border border-white/10 bg-[#090912]/95 p-2 shadow-2xl backdrop-blur-xl lg:hidden">
+              {[
+                { label: 'Experience', href: '#experience-section' },
+                { label: 'Awards', href: '#awards-section' },
+                { label: 'About', href: '#about-section' },
+                { label: 'Contact', href: '#contact-section' },
+              ].map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="rounded-xl px-4 py-3 text-sm font-medium text-slate-300 transition hover:bg-white/5 hover:text-cyan-300"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          )}
         </div>
       </header>
 
-      <main className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-16 px-4 pb-24 pt-8 md:px-8">
+      <main className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-10 px-3 pb-20 pt-3 sm:px-4 sm:pt-6 md:gap-16 md:px-8 md:pb-24 md:pt-8">
         <section
           id="hero-profile-section"
-          className="relative flex min-h-[500px] flex-col items-center justify-center overflow-hidden py-8 md:min-h-[550px]"
+          className="relative flex min-h-[520px] flex-col items-center justify-center overflow-hidden py-8 sm:min-h-[540px] md:min-h-[550px]"
         >
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute left-1/2 top-[43%] h-[220px] w-[720px] -translate-x-1/2 rounded-full bg-cyan-500/[0.045] blur-[90px]" />
           </div>
 
-          <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center justify-center text-center">
-            <div className="relative grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3 overflow-visible px-2 sm:gap-5 md:px-5">
+          <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-1 text-center sm:px-3">
+            <div className="relative flex w-full items-center justify-center overflow-visible px-1 sm:px-3 md:grid md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:gap-5 md:px-5">
               <div aria-hidden="true" className="hidden min-w-[72px] items-center justify-end pr-3 md:flex md:min-w-[112px] md:pr-5">
                 <span className="h-px min-w-8 flex-1 bg-gradient-to-r from-transparent via-cyan-400/45 to-cyan-400/80" />
               </div>
@@ -725,8 +733,8 @@ export default function App() {
                 <div className="pointer-events-none absolute left-[24%] top-[56%] hidden h-6 w-32 -skew-x-12 bg-[#030307] shadow-[0_0_26px_rgba(34,211,238,0.18)] md:block" />
                 <div className="pointer-events-none absolute right-[19%] top-[56%] hidden h-6 w-28 skew-x-12 bg-[#030307] shadow-[0_0_26px_rgba(168,85,247,0.16)] md:block" />
 
-                <h1 className="relative overflow-visible text-[clamp(2.8rem,7vw,6.4rem)] font-black uppercase leading-[0.9] tracking-[-0.045em] text-white">
-                  <span className="block sm:inline">Akshita</span>{' '}
+                <h1 className="relative max-w-full overflow-visible text-[clamp(2.65rem,13vw,6.4rem)] font-black uppercase leading-[0.88] tracking-[-0.05em] text-white sm:text-[clamp(3.5rem,10vw,6.4rem)]">
+                  <span className="block sm:inline">Akshita</span><span className="hidden sm:inline"> </span>
                   <span className="inline-block bg-gradient-to-r from-cyan-300 via-cyan-400 to-purple-500 bg-clip-text pr-[0.12em] text-transparent">
                     Sarda
                   </span>
@@ -738,19 +746,19 @@ export default function App() {
               </div>
             </div>
 
-            <h2 className="mt-5 font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-300 sm:text-xs md:text-base md:tracking-[0.28em]">
+            <h2 className="mt-6 max-w-[22rem] font-mono text-[10px] font-semibold uppercase leading-5 tracking-[0.17em] text-slate-300 sm:max-w-none sm:text-xs sm:tracking-[0.22em] md:text-base md:tracking-[0.28em]">
               System Engineer <span className="text-cyan-400">·</span> TCS BaNCS Support Specialist
             </h2>
 
-            <p className="mt-4 max-w-2xl font-mono text-sm leading-6 text-slate-400 md:text-[15px] md:leading-7">
+            <p className="mt-4 max-w-[35rem] px-2 font-mono text-[13px] leading-6 text-slate-400 sm:px-0 sm:text-sm md:text-[15px] md:leading-7">
               Managing enterprise SBI Core Banking production environments.
               <br className="hidden md:block" /> Optimizing high-scale databases and automating critical overnight batches.
             </p>
 
-            <div className="mt-7 flex w-full justify-center">
+            <div className="mt-7 flex w-full justify-center px-3 sm:px-0">
               <a
                 href="#spatial-journey-section"
-                className="group relative inline-flex min-h-12 w-full max-w-xs items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-cyan-400 via-sky-400 to-fuchsia-500 px-8 text-sm font-extrabold uppercase tracking-wide text-slate-950 shadow-[0_0_32px_rgba(34,211,238,0.2)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_42px_rgba(168,85,247,0.28)]"
+                className="group relative inline-flex min-h-12 w-full max-w-[21rem] items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-cyan-400 via-sky-400 to-fuchsia-500 px-8 text-sm font-extrabold uppercase tracking-wide text-slate-950 shadow-[0_0_32px_rgba(34,211,238,0.2)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_42px_rgba(168,85,247,0.28)]"
               >
                 <span className="absolute inset-0 translate-x-[-110%] bg-gradient-to-r from-transparent via-white/35 to-transparent transition-transform duration-700 group-hover:translate-x-[110%]" />
                 <span className="relative">Explore Journey</span>
@@ -770,7 +778,7 @@ export default function App() {
 
         <section
           id="spatial-journey-section"
-          className="glass-panel rounded-[40px] border-white/10 p-8 shadow-2xl backdrop-blur-3xl md:p-10"
+          className="glass-panel rounded-[28px] border-white/10 p-4 shadow-2xl backdrop-blur-3xl sm:p-6 md:rounded-[40px] md:p-10"
         >
           <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-center">
             <div>
